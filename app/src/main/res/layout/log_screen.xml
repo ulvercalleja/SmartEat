@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LogScreen">
+
+    <ImageView
+        android:id="@+id/idivImagenSup"
+        android:layout_width="413dp"
+        android:layout_height="263dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/logo_smart_eat"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/idtvIdentificate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:fontFamily="@font/montserrat"
+        android:text="IDENTIFÍCATE"
+        android:textAllCaps="false"
+        android:textColor="#D0433C"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/idivImagenSup"
+        app:layout_constraintTop_toBottomOf="@+id/idivImagenSup" />
+
+    <ImageButton
+        android:id="@+id/idibBotonGoogle"
+        android:layout_width="333dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:adjustViewBounds="true"
+        android:background="@null"
+        android:scaleType="centerCrop"
+        android:src="@drawable/boton_log_google"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idtvIdentificate" />
+
+    <TextView
+        android:id="@+id/idtvRegistrarseGoogle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginEnd="70dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Inicia sesión con Google"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="@+id/idibBotonGoogle"
+        app:layout_constraintEnd_toEndOf="@+id/idibBotonGoogle"
+        app:layout_constraintStart_toStartOf="@+id/idibBotonGoogle"
+        app:layout_constraintTop_toTopOf="@+id/idibBotonGoogle" />
+
+    <ImageButton
+        android:id="@+id/idibBotonCorreo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:adjustViewBounds="true"
+        android:background="@null"
+        android:scaleType="centerCrop"
+        android:src="@drawable/boton_registro_correo"
+        app:layout_constraintEnd_toEndOf="@+id/idibBotonGoogle"
+        app:layout_constraintStart_toStartOf="@+id/idibBotonGoogle"
+        app:layout_constraintTop_toBottomOf="@+id/idibBotonGoogle" />
+
+    <TextView
+        android:id="@+id/idtvRegistrarseCorreo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginEnd="4dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Registrarse con correo electrónico"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="@+id/idibBotonCorreo"
+        app:layout_constraintEnd_toEndOf="@+id/idibBotonCorreo"
+        app:layout_constraintStart_toStartOf="@+id/idibBotonCorreo"
+        app:layout_constraintTop_toTopOf="@+id/idibBotonCorreo" />
+
+    <TextView
+        android:id="@+id/idtvTienesCuenta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/montserrat"
+        android:text="¿Ya tienes una cuenta?"
+        android:textColor="#D07514"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/idibBotonCorreo"
+        app:layout_constraintTop_toBottomOf="@+id/idibBotonCorreo" />
+
+    <ImageButton
+        android:id="@+id/idibIniciarSesion"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:adjustViewBounds="true"
+        android:background="@null"
+        android:scaleType="centerCrop"
+        android:src="@drawable/boton_iniciar_sesion"
+        app:layout_constraintEnd_toEndOf="@+id/idibBotonCorreo"
+        app:layout_constraintStart_toStartOf="@+id/idibBotonCorreo"
+        app:layout_constraintTop_toBottomOf="@+id/idtvTienesCuenta" />
+
+    <TextView
+        android:id="@+id/idtvIniciarSesion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:fontFamily="@font/montserrat"
+        android:text="Iniciar sesión"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/idibIniciarSesion"
+        app:layout_constraintEnd_toEndOf="@+id/idibIniciarSesion"
+        app:layout_constraintStart_toStartOf="@+id/idibIniciarSesion"
+        app:layout_constraintTop_toTopOf="@+id/idibIniciarSesion" />
+
+    <!-- Para centrar el texto en el botón -->
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
