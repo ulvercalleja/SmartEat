@@ -13,7 +13,7 @@
         android:theme="@style/Theme.SmartEat"
         tools:targetApi="31">
         <activity
-            android:name=".LoginScreen"
+            android:name=".RegistroPantalla"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,7 +22,25 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LogScreen"
+            android:name=".MasComida"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".IniciarSesionPantalla"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".InicioPantalla"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

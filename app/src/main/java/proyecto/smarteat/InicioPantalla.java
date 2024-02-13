@@ -4,11 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class LogScreen extends AppCompatActivity {
+public class InicioPantalla extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.log_screen);
+        setContentView(R.layout.inicio_pantalla);
     }
 }

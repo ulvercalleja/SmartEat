@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginScreen">
+    tools:context=".RegistroPantalla">
 
     <ImageView
-        android:id="@+id/idivImagenSup2"
+        android:id="@+id/prpivImagenSup"
         android:layout_width="413dp"
         android:layout_height="263dp"
         android:adjustViewBounds="true"
@@ -18,43 +18,59 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/idtvIniciarSesion2"
+        android:id="@+id/prtvRegistrarse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
         android:fontFamily="@font/montserrat"
-        android:text="INICIAR SESIÓN"
+        android:text="REGISTRARSE"
         android:textAllCaps="false"
         android:textColor="#D0433C"
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/idivImagenSup2"
-        app:layout_constraintTop_toBottomOf="@+id/idivImagenSup2" />
+        app:layout_constraintStart_toStartOf="@+id/prpivImagenSup"
+        app:layout_constraintTop_toBottomOf="@+id/prpivImagenSup" />
 
     <EditText
-        android:id="@+id/idetUsuarioCorreo"
+        android:id="@+id/pretUsuario"
         android:layout_width="333dp"
         android:layout_height="49dp"
         android:layout_marginTop="28dp"
         android:background="@drawable/boton_iniciar_sesion"
         android:ems="10"
         android:fontFamily="@font/montserrat"
-        android:hint="Usuario, correo eléctronico o teléfono"
-        android:textColorHint="#F1EFEF"
+        android:hint="Usuario"
         android:inputType="text"
         android:textAlignment="center"
         android:textColor="#F1EFEF"
+        android:textColorHint="#F1EFEF"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idtvIniciarSesion2" />
+        app:layout_constraintTop_toBottomOf="@+id/prtvRegistrarse" />
 
     <EditText
-        android:id="@+id/idetContraseña"
+        android:id="@+id/pretCorreo"
+        android:layout_width="333dp"
+        android:layout_height="49dp"
+        android:background="@drawable/boton_iniciar_sesion"
+        android:ems="10"
+        android:fontFamily="@font/montserrat"
+        android:hint="Correo electrónico"
+        android:inputType="text"
+        android:textAlignment="center"
+        android:textColor="#F1EFEF"
+        android:textColorHint="#F1EFEF"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/pretUsuario"
+        app:layout_constraintStart_toStartOf="@+id/pretUsuario"
+        app:layout_constraintTop_toBottomOf="@+id/pretUsuario" />
+
+    <EditText
+        android:id="@+id/pretContraseña"
         android:layout_width="0dp"
         android:layout_height="49dp"
-        android:layout_marginTop="8dp"
         android:background="@drawable/boton_contrasena"
         android:ems="10"
         android:fontFamily="@font/montserrat"
@@ -64,33 +80,38 @@
         android:textColor="#F1EFEF"
         android:textColorHint="#F1EFEF"
         android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/idetUsuarioCorreo"
-        app:layout_constraintStart_toStartOf="@+id/idetUsuarioCorreo"
-        app:layout_constraintTop_toBottomOf="@+id/idetUsuarioCorreo" />
+        app:layout_constraintEnd_toEndOf="@+id/pretCorreo"
+        app:layout_constraintStart_toStartOf="@+id/pretCorreo"
+        tools:layout_editor_absoluteY="475dp" />
 
-    <TextView
-        android:id="@+id/idtvTienesCuenta2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+    <EditText
+        android:id="@+id/pretContraseñaRep"
+        android:layout_width="0dp"
+        android:layout_height="49dp"
+        android:background="@drawable/boton_contrasena"
+        android:ems="10"
         android:fontFamily="@font/montserrat"
-        android:text="¿Olvidó la contraseña?"
-        android:textColor="#D07514"
-        android:textSize="10sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/idetContraseña"
-        app:layout_constraintTop_toBottomOf="@+id/idetContraseña" />
+        android:hint="Repetir Contraseña"
+        android:inputType="text"
+        android:textAlignment="center"
+        android:textColor="#F1EFEF"
+        android:textColorHint="#F1EFEF"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/pretContraseña"
+        app:layout_constraintStart_toStartOf="@+id/pretContraseña"
+        app:layout_constraintTop_toBottomOf="@+id/pretContraseña" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/prbtCrear"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_marginTop="24dp"
         android:backgroundTint="#BA4A4A"
         android:fontFamily="@font/montserrat"
-        android:text="INICIAR"
+        android:text="CREAR USUARIO"
         android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="@+id/idetContraseña"
-        app:layout_constraintStart_toStartOf="@+id/idtvTienesCuenta2"
-        app:layout_constraintTop_toBottomOf="@+id/idtvTienesCuenta2" />
+        app:layout_constraintEnd_toEndOf="@+id/pretContraseñaRep"
+        app:layout_constraintStart_toStartOf="@+id/pretContraseñaRep"
+        app:layout_constraintTop_toBottomOf="@+id/pretContraseñaRep" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LogScreen">
+    tools:context=".InicioPantalla">
 
     <ImageView
-        android:id="@+id/idivImagenSup"
+        android:id="@+id/ipivImagenSup"
         android:layout_width="413dp"
         android:layout_height="263dp"
         android:adjustViewBounds="true"
@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/idtvIdentificate"
+        android:id="@+id/iptvIdentificate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
@@ -28,11 +28,11 @@
         android:textColor="#D0433C"
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/idivImagenSup"
-        app:layout_constraintTop_toBottomOf="@+id/idivImagenSup" />
+        app:layout_constraintStart_toStartOf="@+id/ipivImagenSup"
+        app:layout_constraintTop_toBottomOf="@+id/ipivImagenSup" />
 
     <ImageButton
-        android:id="@+id/idibBotonGoogle"
+        android:id="@+id/ipibBotonGoogle"
         android:layout_width="333dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
@@ -42,10 +42,10 @@
         android:src="@drawable/boton_log_google"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idtvIdentificate" />
+        app:layout_constraintTop_toBottomOf="@+id/iptvIdentificate" />
 
     <TextView
-        android:id="@+id/idtvRegistrarseGoogle"
+        android:id="@+id/iptvRegistrarseGoogle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
@@ -53,13 +53,13 @@
         android:fontFamily="@font/montserrat"
         android:text="Inicia sesión con Google"
         android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="@+id/idibBotonGoogle"
-        app:layout_constraintEnd_toEndOf="@+id/idibBotonGoogle"
-        app:layout_constraintStart_toStartOf="@+id/idibBotonGoogle"
-        app:layout_constraintTop_toTopOf="@+id/idibBotonGoogle" />
+        app:layout_constraintBottom_toBottomOf="@+id/ipibBotonGoogle"
+        app:layout_constraintEnd_toEndOf="@+id/ipibBotonGoogle"
+        app:layout_constraintStart_toStartOf="@+id/ipibBotonGoogle"
+        app:layout_constraintTop_toTopOf="@+id/ipibBotonGoogle" />
 
     <ImageButton
-        android:id="@+id/idibBotonCorreo"
+        android:id="@+id/ipibBotonCorreo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -67,12 +67,12 @@
         android:background="@null"
         android:scaleType="centerCrop"
         android:src="@drawable/boton_registro_correo"
-        app:layout_constraintEnd_toEndOf="@+id/idibBotonGoogle"
-        app:layout_constraintStart_toStartOf="@+id/idibBotonGoogle"
-        app:layout_constraintTop_toBottomOf="@+id/idibBotonGoogle" />
+        app:layout_constraintEnd_toEndOf="@+id/ipibBotonGoogle"
+        app:layout_constraintStart_toStartOf="@+id/ipibBotonGoogle"
+        app:layout_constraintTop_toBottomOf="@+id/ipibBotonGoogle" />
 
     <TextView
-        android:id="@+id/idtvRegistrarseCorreo"
+        android:id="@+id/iptvRegistrarseCorreo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
@@ -80,13 +80,13 @@
         android:fontFamily="@font/montserrat"
         android:text="Registrarse con correo electrónico"
         android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="@+id/idibBotonCorreo"
-        app:layout_constraintEnd_toEndOf="@+id/idibBotonCorreo"
-        app:layout_constraintStart_toStartOf="@+id/idibBotonCorreo"
-        app:layout_constraintTop_toTopOf="@+id/idibBotonCorreo" />
+        app:layout_constraintBottom_toBottomOf="@+id/ipibBotonCorreo"
+        app:layout_constraintEnd_toEndOf="@+id/ipibBotonCorreo"
+        app:layout_constraintStart_toStartOf="@+id/ipibBotonCorreo"
+        app:layout_constraintTop_toTopOf="@+id/ipibBotonCorreo" />
 
     <TextView
-        android:id="@+id/idtvTienesCuenta"
+        android:id="@+id/iptvTienesCuenta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -95,11 +95,11 @@
         android:textColor="#D07514"
         android:textSize="10sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/idibBotonCorreo"
-        app:layout_constraintTop_toBottomOf="@+id/idibBotonCorreo" />
+        app:layout_constraintStart_toStartOf="@+id/ipibBotonCorreo"
+        app:layout_constraintTop_toBottomOf="@+id/ipibBotonCorreo" />
 
     <ImageButton
-        android:id="@+id/idibIniciarSesion"
+        android:id="@+id/ipibIniciarSesion"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -107,12 +107,12 @@
         android:background="@null"
         android:scaleType="centerCrop"
         android:src="@drawable/boton_iniciar_sesion"
-        app:layout_constraintEnd_toEndOf="@+id/idibBotonCorreo"
-        app:layout_constraintStart_toStartOf="@+id/idibBotonCorreo"
-        app:layout_constraintTop_toBottomOf="@+id/idtvTienesCuenta" />
+        app:layout_constraintEnd_toEndOf="@+id/ipibBotonCorreo"
+        app:layout_constraintStart_toStartOf="@+id/ipibBotonCorreo"
+        app:layout_constraintTop_toBottomOf="@+id/iptvTienesCuenta" />
 
     <TextView
-        android:id="@+id/idtvIniciarSesion2"
+        android:id="@+id/prtvRegistrarse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
@@ -120,10 +120,10 @@
         android:text="Iniciar sesión"
         android:textColor="#FFFFFF"
         android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@+id/idibIniciarSesion"
-        app:layout_constraintEnd_toEndOf="@+id/idibIniciarSesion"
-        app:layout_constraintStart_toStartOf="@+id/idibIniciarSesion"
-        app:layout_constraintTop_toTopOf="@+id/idibIniciarSesion" />
+        app:layout_constraintBottom_toBottomOf="@+id/ipibIniciarSesion"
+        app:layout_constraintEnd_toEndOf="@+id/ipibIniciarSesion"
+        app:layout_constraintStart_toStartOf="@+id/ipibIniciarSesion"
+        app:layout_constraintTop_toTopOf="@+id/ipibIniciarSesion" />
 
     <!-- Para centrar el texto en el botón -->
 
