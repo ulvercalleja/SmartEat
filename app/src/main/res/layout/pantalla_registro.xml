@@ -102,17 +102,31 @@
         app:layout_constraintStart_toStartOf="@+id/pretContraseña"
         app:layout_constraintTop_toBottomOf="@+id/pretContraseña" />
 
+    <TextView
+        android:id="@+id/prtvTextoError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/montserrat"
+        android:textColor="#E91E47"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/pretContraseñaRep"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="@+id/pretContraseñaRep"
+        app:layout_constraintTop_toBottomOf="@+id/pretContraseñaRep" />
+
     <Button
         android:id="@+id/prbtCrear"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
         android:backgroundTint="#BA4A4A"
         android:fontFamily="@font/montserrat"
         android:text="CREAR USUARIO"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="@+id/pretContraseñaRep"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="@+id/pretContraseñaRep"
-        app:layout_constraintTop_toBottomOf="@+id/pretContraseñaRep" />
+        app:layout_constraintTop_toBottomOf="@+id/prtvTextoError" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
