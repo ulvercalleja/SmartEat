@@ -43,7 +43,7 @@ public class ComidasAdapter extends RecyclerView.Adapter<ComidasAdapter.ViewHold
         ImageView imagenComida;
         public ViewHolder(View itemView) {
             super(itemView);
-            nombreComida = itemView.findViewById(R.id.rctvNombreComida);
+            nombreComida = itemView.findViewById(R.id.rfctvNombreComida);
             imagenComida = itemView.findViewById(R.id.rcivComida);
         }
     }

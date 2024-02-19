@@ -20,7 +20,7 @@
         app:srcCompat="@drawable/boton_dias" />
 
     <TextView
-        android:id="@+id/rctvNombreComida"
+        android:id="@+id/rfctvNombreComida"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
