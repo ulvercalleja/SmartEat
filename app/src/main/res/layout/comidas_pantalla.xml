@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ComidasPantalla">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewComidas"
+        android:layout_width="0dp"
+        android:layout_height="547dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cpivMenuHorizontalSuperior" />
+
+    <ImageView
+        android:id="@+id/cpivMenuHorizontalSuperior"
+        android:layout_width="413dp"
+        android:layout_height="99dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/menu_horizontal_superior" />
+
+    <ImageView
+        android:id="@+id/cpivMenuHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerViewComidas"
+        app:srcCompat="@drawable/menu_horizontal_inferior" />
+
+    <ImageButton
+        android:id="@+id/cpibBotonHome"
+        android:layout_width="35dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginBottom="24dp"
+        android:adjustViewBounds="true"
+        android:background="@null"
+        android:scaleType="centerCrop"
+        android:src="@drawable/boton_home"
+        app:layout_constraintBottom_toBottomOf="@+id/cpivMenuHorizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerViewComidas" />
+
+    <TextView
+        android:id="@+id/cptvHome"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Home"
+        android:textColor="#FDFDFD"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/cpibBotonHome"
+        app:layout_constraintStart_toStartOf="@+id/cpibBotonHome"
+        app:layout_constraintTop_toBottomOf="@+id/cpibBotonHome" />
+
+    <ImageButton
+        android:id="@+id/cpibBotonCalendario"
+        android:layout_width="35dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="32dp"
+        android:adjustViewBounds="true"
+        android:background="@null"
+        android:scaleType="centerCrop"
+        android:src="@drawable/boton_calendario"
+        app:layout_constraintBottom_toBottomOf="@+id/cpibBotonHome"
+        app:layout_constraintStart_toEndOf="@+id/cpibBotonHome"
+        app:layout_constraintTop_toTopOf="@+id/cpibBotonHome" />
+
+    <TextView
+        android:id="@+id/cptvCalendario"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Calendario"
+        android:textColor="#FDFDFD"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/cpibBotonCalendario"
+        app:layout_constraintStart_toStartOf="@+id/cpibBotonCalendario"
+        app:layout_constraintTop_toBottomOf="@+id/cpibBotonCalendario" />
+
+    <ImageButton
+        android:id="@+id/cpibBotonComida"
+        android:layout_width="35dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="32dp"
+        android:adjustViewBounds="true"
+        android:background="@null"
+        android:scaleType="centerCrop"
+        android:src="@drawable/boton_comida"
+        app:layout_constraintBottom_toBottomOf="@+id/cpibBotonCalendario"
+        app:layout_constraintStart_toEndOf="@+id/cpibBotonCalendario"
+        app:layout_constraintTop_toTopOf="@+id/cpibBotonCalendario" />
+
+    <TextView
+        android:id="@+id/cptvComida"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Comida"
+        android:textColor="#FDFDFD"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/cpibBotonComida"
+        app:layout_constraintStart_toStartOf="@+id/cpibBotonComida"
+        app:layout_constraintTop_toBottomOf="@+id/cpibBotonComida" />
+
+    <ImageButton
+        android:id="@+id/cpibBotonBuscar"
+        android:layout_width="35dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="32dp"
+        android:adjustViewBounds="true"
+        android:background="@null"
+        android:scaleType="centerCrop"
+        android:src="@drawable/boton_buscar"
+        app:layout_constraintBottom_toBottomOf="@+id/cpibBotonComida"
+        app:layout_constraintStart_toEndOf="@+id/cpibBotonComida"
+        app:layout_constraintTop_toTopOf="@+id/cpibBotonComida" />
+
+    <TextView
+        android:id="@+id/cptvBuscar"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Buscar"
+        android:textColor="#FDFDFD"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/cpibBotonBuscar"
+        app:layout_constraintStart_toStartOf="@+id/cpibBotonBuscar"
+        app:layout_constraintTop_toBottomOf="@+id/cpibBotonBuscar" />
+
+    <ImageButton
+        android:id="@+id/cpibBotonPerfil"
+        android:layout_width="35dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="32dp"
+        android:adjustViewBounds="true"
+        android:background="@null"
+        android:scaleType="centerCrop"
+        android:src="@drawable/boton_perfil"
+        app:layout_constraintBottom_toBottomOf="@+id/cpibBotonBuscar"
+        app:layout_constraintStart_toEndOf="@+id/cpibBotonBuscar"
+        app:layout_constraintTop_toTopOf="@+id/cpibBotonBuscar" />
+
+    <TextView
+        android:id="@+id/cptvPerfil"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Perfil"
+        android:textColor="#FDFDFD"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/cpibBotonPerfil"
+        app:layout_constraintStart_toStartOf="@+id/cpibBotonPerfil"
+        app:layout_constraintTop_toBottomOf="@+id/cpibBotonPerfil" />
+
+    <TextView
+        android:id="@+id/cptvTuPlan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Tu plan semanal"
+        android:textColor="#FBFBFB"
+        android:textSize="24sp"
+        android:typeface="normal"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/cpivMenuHorizontalSuperior"
+        app:layout_constraintTop_toTopOf="@+id/cpivMenuHorizontalSuperior" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

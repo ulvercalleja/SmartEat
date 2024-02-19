@@ -9,11 +9,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class MealAdapter extends RecyclerView.Adapter<MealAdapter.ViewHolder> {
-    private List<String> mealsList;
+public class ComidasAdapter extends RecyclerView.Adapter<ComidasAdapter.ViewHolder> {
+    private List<String> listaComida;
 
-    public MealAdapter(List<String> mealsList) {
-        this.mealsList = mealsList;
+    public ComidasAdapter(List<String> listaComida) {
+        this.listaComida = listaComida;
     }
 
     @NonNull
@@ -25,13 +25,13 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        String meal = mealsList.get(position);
+        String meal = listaComida.get(position);
         holder.textView.setText(meal);
     }
 
     @Override
     public int getItemCount() {
-        return mealsList.size();
+        return listaComida.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

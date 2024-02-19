@@ -7,7 +7,7 @@
     tools:context=".RegistroPantalla">
 
     <ImageView
-        android:id="@+id/prpivImagenSup"
+        android:id="@+id/ispivImagenSup"
         android:layout_width="413dp"
         android:layout_height="263dp"
         android:adjustViewBounds="true"
@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/prtvRegistrarse"
+        android:id="@+id/isptvRegistrarse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="42dp"
@@ -28,11 +28,11 @@
         android:textColor="#D0433C"
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/prpivImagenSup"
-        app:layout_constraintTop_toBottomOf="@+id/prpivImagenSup" />
+        app:layout_constraintStart_toStartOf="@+id/ispivImagenSup"
+        app:layout_constraintTop_toBottomOf="@+id/ispivImagenSup" />
 
     <EditText
-        android:id="@+id/pretUsuario"
+        android:id="@+id/ispetUsuario"
         android:layout_width="333dp"
         android:layout_height="49dp"
         android:layout_marginTop="28dp"
@@ -48,7 +48,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/prtvRegistrarse" />
+        app:layout_constraintTop_toBottomOf="@+id/isptvRegistrarse" />
 
     <EditText
         android:id="@+id/pretCorreo"
@@ -63,12 +63,12 @@
         android:textColor="#F1EFEF"
         android:textColorHint="#F1EFEF"
         android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/pretUsuario"
-        app:layout_constraintStart_toStartOf="@+id/pretUsuario"
-        app:layout_constraintTop_toBottomOf="@+id/pretUsuario" />
+        app:layout_constraintEnd_toEndOf="@+id/ispetUsuario"
+        app:layout_constraintStart_toStartOf="@+id/ispetUsuario"
+        app:layout_constraintTop_toBottomOf="@+id/ispetUsuario" />
 
     <EditText
-        android:id="@+id/pretContraseña"
+        android:id="@+id/ispetContraseña"
         android:layout_width="0dp"
         android:layout_height="49dp"
         android:background="@drawable/boton_contrasena"
@@ -98,9 +98,9 @@
         android:textColor="#F1EFEF"
         android:textColorHint="#F1EFEF"
         android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/pretContraseña"
-        app:layout_constraintStart_toStartOf="@+id/pretContraseña"
-        app:layout_constraintTop_toBottomOf="@+id/pretContraseña" />
+        app:layout_constraintEnd_toEndOf="@+id/ispetContraseña"
+        app:layout_constraintStart_toStartOf="@+id/ispetContraseña"
+        app:layout_constraintTop_toBottomOf="@+id/ispetContraseña" />
 
     <TextView
         android:id="@+id/prtvTextoError"
@@ -116,7 +116,7 @@
         app:layout_constraintTop_toBottomOf="@+id/pretContraseñaRep" />
 
     <Button
-        android:id="@+id/prbtCrear"
+        android:id="@+id/ispbtCrear"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_marginTop="8dp"

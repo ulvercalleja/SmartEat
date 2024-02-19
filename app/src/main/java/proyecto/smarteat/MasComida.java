@@ -16,7 +16,7 @@ public class MasComida extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mas_comida);
 
-        btAñadir = findViewById(R.id.prbtCrear);
+        btAñadir = findViewById(R.id.ispbtCrear);
 
         btAñadir.setOnClickListener(new View.OnClickListener() {
             @Override

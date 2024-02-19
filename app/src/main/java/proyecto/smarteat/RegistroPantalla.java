@@ -29,14 +29,14 @@ public class RegistroPantalla extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.pantalla_registro);
+        setContentView(R.layout.registro_pantalla);
 
-        etNombre = findViewById(R.id.pretUsuario);
-        etPass = findViewById(R.id.pretContraseña);
+        etNombre = findViewById(R.id.ispetUsuario);
+        etPass = findViewById(R.id.ispetContraseña);
         etPassRep = findViewById(R.id.pretContraseñaRep);
         etEmail = findViewById(R.id.pretCorreo);
         tvError =  findViewById(R.id.prtvTextoError);
-        btCrear = findViewById(R.id.prbtCrear);
+        btCrear = findViewById(R.id.ispbtCrear);
 
         btCrear.setOnClickListener(new View.OnClickListener() {
             @Override
