@@ -19,7 +19,6 @@ public class ComidasPantalla extends AppCompatActivity {
         setContentView(R.layout.comidas_pantalla);
 
         String dayName = getIntent().getStringExtra(NOMBRE_DIA_INFO);
-        getSupportActionBar().setTitle(dayName); // Establece el título de la actividad al día seleccionado.
 
         recyclerViewComidas = findViewById(R.id.recyclerViewComidas);
         recyclerViewComidas.setLayoutManager(new LinearLayoutManager(this));

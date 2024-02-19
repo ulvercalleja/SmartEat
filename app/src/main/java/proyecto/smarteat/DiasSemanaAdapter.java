@@ -33,8 +33,8 @@ public class DiasSemanaAdapter extends RecyclerView.Adapter<DiasSemanaAdapter.Vi
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         DiasSemana diaSemana = listaDias.get(position);
-        holder.weekDayName.setText(diaSemana.getNombre());
-        holder.weekDayImage.setImageResource(diaSemana.getImagenComida());
+        holder.nombreDiaSemana.setText(diaSemana.getNombre());
+        holder.imagenDiaSemana.setImageResource(diaSemana.getImagenComida());
 
         // Agregado manejo de clics para cada elemento del RecyclerView.
         holder.itemView.setOnClickListener(v -> {
@@ -50,12 +50,12 @@ public class DiasSemanaAdapter extends RecyclerView.Adapter<DiasSemanaAdapter.Vi
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView weekDayName;
-        ImageView weekDayImage;
+        TextView nombreDiaSemana;
+        ImageView imagenDiaSemana;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            weekDayName = itemView.findViewById(R.id.rdtvNombreDia);
-            weekDayImage = itemView.findViewById(R.id.rdivComida);
+            nombreDiaSemana = itemView.findViewById(R.id.rdtvNombreDia);
+            imagenDiaSemana = itemView.findViewById(R.id.rdivComida);
         }
     }
 }

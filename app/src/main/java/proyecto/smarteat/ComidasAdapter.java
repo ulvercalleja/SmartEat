@@ -19,14 +19,14 @@ public class ComidasAdapter extends RecyclerView.Adapter<ComidasAdapter.ViewHold
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(android.R.layout.simple_list_item_1, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_comidas, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        String meal = listaComida.get(position);
-        holder.textView.setText(meal);
+        String nombreComida = listaComida.get(position);
+        holder.nombreComida.setText(nombreComida);
     }
 
     @Override
@@ -35,11 +35,11 @@ public class ComidasAdapter extends RecyclerView.Adapter<ComidasAdapter.ViewHold
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView textView;
+        TextView nombreComida;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            textView = itemView.findViewById(android.R.id.text1);
+            nombreComida = itemView.findViewById(R.id.rctvNombreComida);
         }
     }
 }
