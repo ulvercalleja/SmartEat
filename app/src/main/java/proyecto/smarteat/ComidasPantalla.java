@@ -11,7 +11,13 @@ public class ComidasPantalla extends AppCompatActivity {
     private final String NOMBRE_DIA_INFO = "nombreDia";
     private RecyclerView recyclerViewComidas;
     private ComidasAdapter comidaAdapter;
-    private List<String> comidasLista = Arrays.asList("Desayuno", "Merienda", "Comida", "Almuerzo", "Cena");
+    private List<Comidas> comidasLista = Arrays.asList(
+            new Comidas("Desayuno", R.drawable.comida_desayuno),
+            new Comidas("Almuerzo", R.drawable.comida_almuerzo),
+            new Comidas("Comida", R.drawable.comida_comida),
+            new Comidas("Merienda", R.drawable.comida_merienda),
+            new Comidas("Cena", R.drawable.comida_cena)
+    );
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +28,7 @@ public class ComidasPantalla extends AppCompatActivity {
 
         recyclerViewComidas = findViewById(R.id.recyclerViewComidas);
         recyclerViewComidas.setLayoutManager(new LinearLayoutManager(this));
-        comidaAdapter = new ComidasAdapter(comidasLista);
+        comidaAdapter = new ComidasAdapter(comidasLista, this);
         recyclerViewComidas.setAdapter(comidaAdapter);
     }
 }
