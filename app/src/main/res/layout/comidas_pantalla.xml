@@ -179,7 +179,7 @@
         android:textColor="#FBFBFB"
         android:textSize="24sp"
         android:typeface="normal"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerViewComidas"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/cpivMenuHorizontalSuperior"
         app:layout_constraintTop_toTopOf="@+id/cpivMenuHorizontalSuperior" />
