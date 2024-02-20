@@ -35,10 +35,17 @@ public class ComidasAdapter extends RecyclerView.Adapter<ComidasAdapter.ViewHold
         Comidas nombreComida = listaComida.get(position);
         holder.nombreComida.setText(nombreComida.getNombre());
         holder.imagenComida.setImageResource(nombreComida.getImagenComida());
+
         // Agregado manejo de clics para cada elemento del RecyclerView.
         holder.itemView.setOnClickListener(v -> {
-            Intent intent = new Intent(context, MasComida.class); // Cambiar a la clase de la actividad adecuada
-            context.startActivity(intent);
+            TusComidasFragment tusComidas = new TusComidasFragment();
+
+            // Reemplaza el fragmento actual con ComidasFragment
+            FragmentManager fragmentManager = ((AppCompatActivity) context).getSupportFragmentManager();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.mpfrFragmentListas, tusComidas)
+                    .addToBackStack(null)  // Opcional: permite volver al fragmento anterior
+                    .commit();
         });
     }
 
