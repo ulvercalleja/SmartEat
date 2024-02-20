@@ -2,6 +2,7 @@ package proyecto.smarteat;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -38,9 +41,14 @@ public class DiasSemanaAdapter extends RecyclerView.Adapter<DiasSemanaAdapter.Vi
 
         // Agregado manejo de clics para cada elemento del RecyclerView.
         holder.itemView.setOnClickListener(v -> {
-            Intent intent = new Intent(context, ComidasPantalla.class);
-            intent.putExtra(NOMBRE_DIA_INFO, diaSemana.getNombre());
-            context.startActivity(intent);
+            ComidasFragment comidasFragment = new ComidasFragment();
+
+            // Reemplaza el fragmento actual con ComidasFragment
+            FragmentManager fragmentManager = ((AppCompatActivity) context).getSupportFragmentManager();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.mpfrFragmentListas, comidasFragment)
+                    .addToBackStack(null)  // Opcional: permite volver al fragmento anterior
+                    .commit();
         });
     }
 

@@ -4,29 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ComidasPantalla">
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewComidas"
-        android:layout_width="0dp"
-        android:layout_height="547dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cpivMenuHorizontalSuperior" />
+    tools:context=".MenuPantalla">
 
     <ImageView
-        android:id="@+id/cpivMenuHorizontalSuperior"
-        android:layout_width="413dp"
+        android:id="@+id/dspivMenuHorizontalSuperior"
+        android:layout_width="0dp"
         android:layout_height="99dp"
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/mpfrFragmentListas"
+        app:layout_constraintStart_toStartOf="@+id/mpfrFragmentListas"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/menu_horizontal_superior" />
 
     <ImageView
-        android:id="@+id/cpivMenuHorizontal"
+        android:id="@+id/dspivMenuHorizontal"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:adjustViewBounds="true"
@@ -35,25 +27,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerViewComidas"
+        app:layout_constraintTop_toBottomOf="@+id/mpfrFragmentListas"
         app:srcCompat="@drawable/menu_horizontal_inferior" />
 
     <ImageButton
-        android:id="@+id/cpibBotonHome"
+        android:id="@+id/dspibBotonHome"
         android:layout_width="35dp"
         android:layout_height="30dp"
         android:layout_marginStart="48dp"
-        android:layout_marginBottom="24dp"
         android:adjustViewBounds="true"
         android:background="@null"
         android:scaleType="centerCrop"
         android:src="@drawable/boton_home"
-        app:layout_constraintBottom_toBottomOf="@+id/cpivMenuHorizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/dspivMenuHorizontal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerViewComidas" />
+        app:layout_constraintTop_toTopOf="@+id/dspivMenuHorizontal" />
 
     <TextView
-        android:id="@+id/cptvHome"
+        android:id="@+id/dsptvHome"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
@@ -61,12 +52,12 @@
         android:text="Home"
         android:textColor="#FDFDFD"
         android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/cpibBotonHome"
-        app:layout_constraintStart_toStartOf="@+id/cpibBotonHome"
-        app:layout_constraintTop_toBottomOf="@+id/cpibBotonHome" />
+        app:layout_constraintEnd_toEndOf="@+id/dspibBotonHome"
+        app:layout_constraintStart_toStartOf="@+id/dspibBotonHome"
+        app:layout_constraintTop_toBottomOf="@+id/dspibBotonHome" />
 
     <ImageButton
-        android:id="@+id/cpibBotonCalendario"
+        android:id="@+id/dspibBotonCalendario"
         android:layout_width="35dp"
         android:layout_height="30dp"
         android:layout_marginStart="32dp"
@@ -74,12 +65,12 @@
         android:background="@null"
         android:scaleType="centerCrop"
         android:src="@drawable/boton_calendario"
-        app:layout_constraintBottom_toBottomOf="@+id/cpibBotonHome"
-        app:layout_constraintStart_toEndOf="@+id/cpibBotonHome"
-        app:layout_constraintTop_toTopOf="@+id/cpibBotonHome" />
+        app:layout_constraintBottom_toBottomOf="@+id/dspibBotonHome"
+        app:layout_constraintStart_toEndOf="@+id/dspibBotonHome"
+        app:layout_constraintTop_toTopOf="@+id/dspibBotonHome" />
 
     <TextView
-        android:id="@+id/cptvCalendario"
+        android:id="@+id/dsptvCalendario"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
@@ -87,12 +78,12 @@
         android:text="Calendario"
         android:textColor="#FDFDFD"
         android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/cpibBotonCalendario"
-        app:layout_constraintStart_toStartOf="@+id/cpibBotonCalendario"
-        app:layout_constraintTop_toBottomOf="@+id/cpibBotonCalendario" />
+        app:layout_constraintEnd_toEndOf="@+id/dspibBotonCalendario"
+        app:layout_constraintStart_toStartOf="@+id/dspibBotonCalendario"
+        app:layout_constraintTop_toBottomOf="@+id/dspibBotonCalendario" />
 
     <ImageButton
-        android:id="@+id/cpibBotonComida"
+        android:id="@+id/dspibBotonComida"
         android:layout_width="35dp"
         android:layout_height="30dp"
         android:layout_marginStart="32dp"
@@ -100,12 +91,12 @@
         android:background="@null"
         android:scaleType="centerCrop"
         android:src="@drawable/boton_comida"
-        app:layout_constraintBottom_toBottomOf="@+id/cpibBotonCalendario"
-        app:layout_constraintStart_toEndOf="@+id/cpibBotonCalendario"
-        app:layout_constraintTop_toTopOf="@+id/cpibBotonCalendario" />
+        app:layout_constraintBottom_toBottomOf="@+id/dspibBotonCalendario"
+        app:layout_constraintStart_toEndOf="@+id/dspibBotonCalendario"
+        app:layout_constraintTop_toTopOf="@+id/dspibBotonCalendario" />
 
     <TextView
-        android:id="@+id/cptvComida"
+        android:id="@+id/dsptvComida"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
@@ -113,12 +104,12 @@
         android:text="Comida"
         android:textColor="#FDFDFD"
         android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/cpibBotonComida"
-        app:layout_constraintStart_toStartOf="@+id/cpibBotonComida"
-        app:layout_constraintTop_toBottomOf="@+id/cpibBotonComida" />
+        app:layout_constraintEnd_toEndOf="@+id/dspibBotonComida"
+        app:layout_constraintStart_toStartOf="@+id/dspibBotonComida"
+        app:layout_constraintTop_toBottomOf="@+id/dspibBotonComida" />
 
     <ImageButton
-        android:id="@+id/cpibBotonBuscar"
+        android:id="@+id/dspibBotonBuscar"
         android:layout_width="35dp"
         android:layout_height="30dp"
         android:layout_marginStart="32dp"
@@ -126,12 +117,12 @@
         android:background="@null"
         android:scaleType="centerCrop"
         android:src="@drawable/boton_buscar"
-        app:layout_constraintBottom_toBottomOf="@+id/cpibBotonComida"
-        app:layout_constraintStart_toEndOf="@+id/cpibBotonComida"
-        app:layout_constraintTop_toTopOf="@+id/cpibBotonComida" />
+        app:layout_constraintBottom_toBottomOf="@+id/dspibBotonComida"
+        app:layout_constraintStart_toEndOf="@+id/dspibBotonComida"
+        app:layout_constraintTop_toTopOf="@+id/dspibBotonComida" />
 
     <TextView
-        android:id="@+id/cptvBuscar"
+        android:id="@+id/dsptvBuscar"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
@@ -139,12 +130,12 @@
         android:text="Buscar"
         android:textColor="#FDFDFD"
         android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/cpibBotonBuscar"
-        app:layout_constraintStart_toStartOf="@+id/cpibBotonBuscar"
-        app:layout_constraintTop_toBottomOf="@+id/cpibBotonBuscar" />
+        app:layout_constraintEnd_toEndOf="@+id/dspibBotonBuscar"
+        app:layout_constraintStart_toStartOf="@+id/dspibBotonBuscar"
+        app:layout_constraintTop_toBottomOf="@+id/dspibBotonBuscar" />
 
     <ImageButton
-        android:id="@+id/cpibBotonPerfil"
+        android:id="@+id/dspibBotonPerfil"
         android:layout_width="35dp"
         android:layout_height="31dp"
         android:layout_marginStart="32dp"
@@ -152,12 +143,12 @@
         android:background="@null"
         android:scaleType="centerCrop"
         android:src="@drawable/boton_perfil"
-        app:layout_constraintBottom_toBottomOf="@+id/cpibBotonBuscar"
-        app:layout_constraintStart_toEndOf="@+id/cpibBotonBuscar"
-        app:layout_constraintTop_toTopOf="@+id/cpibBotonBuscar" />
+        app:layout_constraintBottom_toBottomOf="@+id/dspibBotonBuscar"
+        app:layout_constraintStart_toEndOf="@+id/dspibBotonBuscar"
+        app:layout_constraintTop_toTopOf="@+id/dspibBotonBuscar" />
 
     <TextView
-        android:id="@+id/cptvPerfil"
+        android:id="@+id/dsptvPerfil"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
@@ -165,12 +156,12 @@
         android:text="Perfil"
         android:textColor="#FDFDFD"
         android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/cpibBotonPerfil"
-        app:layout_constraintStart_toStartOf="@+id/cpibBotonPerfil"
-        app:layout_constraintTop_toBottomOf="@+id/cpibBotonPerfil" />
+        app:layout_constraintEnd_toEndOf="@+id/dspibBotonPerfil"
+        app:layout_constraintStart_toStartOf="@+id/dspibBotonPerfil"
+        app:layout_constraintTop_toBottomOf="@+id/dspibBotonPerfil" />
 
     <TextView
-        android:id="@+id/cptvTuPlan"
+        android:id="@+id/dsptvTuPlan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -179,9 +170,17 @@
         android:textColor="#FBFBFB"
         android:textSize="24sp"
         android:typeface="normal"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerViewComidas"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/cpivMenuHorizontalSuperior"
-        app:layout_constraintTop_toTopOf="@+id/cpivMenuHorizontalSuperior" />
+        app:layout_constraintStart_toStartOf="@+id/dspivMenuHorizontalSuperior"
+        app:layout_constraintTop_toTopOf="@+id/dspivMenuHorizontalSuperior" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/mpfrFragmentListas"
+        android:name="proyecto.smarteat.DiasSemanaFragment"
+        android:layout_width="0dp"
+        android:layout_height="538dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/dspivMenuHorizontal"
+        app:layout_constraintTop_toBottomOf="@+id/dspivMenuHorizontalSuperior" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

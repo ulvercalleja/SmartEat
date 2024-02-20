@@ -18,15 +18,12 @@ public class MasComida extends AppCompatActivity {
 
         btAñadir = findViewById(R.id.ispbtCrear);
 
-        btAñadir.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ComidasFragment fragment = new ComidasFragment();
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.sefrFragment, fragment);
-                fragmentTransaction.commit();
-            }
+        btAñadir.setOnClickListener(view -> {
+            ComidasFragment fragment = new ComidasFragment();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.sefrFragment, fragment);
+            fragmentTransaction.commit();
         });
     }
 }

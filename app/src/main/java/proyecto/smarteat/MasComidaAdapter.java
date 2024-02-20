@@ -11,23 +11,23 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class ComidasFragmentAdapter extends RecyclerView.Adapter<ComidasFragmentAdapter.ViewHolder> {
+public class MasComidaAdapter extends RecyclerView.Adapter<MasComidaAdapter.ViewHolder> {
     private List<PojoTipoComida> listaComida;
     private Context context;
-    public ComidasFragmentAdapter(List<PojoTipoComida> listaComida, Context context) {
+    public MasComidaAdapter(List<PojoTipoComida> listaComida, Context context) {
         this.listaComida = listaComida;
         this.context = context;
     }
 
     @NonNull
     @Override
-    public ComidasFragmentAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MasComidaAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_fragment_comidas, parent, false);
-        return new ComidasFragmentAdapter.ViewHolder(view);
+        return new MasComidaAdapter.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ComidasFragmentAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MasComidaAdapter.ViewHolder holder, int position) {
         PojoTipoComida nombreComida = listaComida.get(position);
         holder.nombreComida.setText(nombreComida.getNombreComida());
     }

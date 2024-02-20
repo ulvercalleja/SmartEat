@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -39,7 +38,7 @@ public class IniciarSesionPantalla extends AppCompatActivity {
                     etContraseña.setError(null); // Borra cualquier mensaje de error existente
                 }
             } else {
-                Intent intent = new Intent(IniciarSesionPantalla.this, DiasSemanaPantalla.class);
+                Intent intent = new Intent(IniciarSesionPantalla.this, MenuPantalla.class);
                 startActivity(intent);
                 finish();
             }
