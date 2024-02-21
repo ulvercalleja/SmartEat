@@ -13,10 +13,10 @@ import java.util.List;
 
 public class SeleccionComidasAdapter extends RecyclerView.Adapter<SeleccionComidasAdapter.ViewHolder> {
 
-    private List<PojoTipoComida> listaSeleccionComida;
+    private List<PojoAlimentos> listaSeleccionComida;
     private Context context;
 
-    public SeleccionComidasAdapter(List<PojoTipoComida> listaSeleccionComida, Context context) {
+    public SeleccionComidasAdapter(List<PojoAlimentos> listaSeleccionComida, Context context) {
         this.listaSeleccionComida = listaSeleccionComida;
         this.context = context;
     }
@@ -30,8 +30,8 @@ public class SeleccionComidasAdapter extends RecyclerView.Adapter<SeleccionComid
 
     @Override
     public void onBindViewHolder(@NonNull SeleccionComidasAdapter.ViewHolder holder, int position) {
-        PojoTipoComida nombreComida = listaSeleccionComida.get(position);
-        holder.nombreComida.setText(nombreComida.getNombreComida());
+        PojoAlimentos nombreComida = listaSeleccionComida.get(position);
+        holder.nombreComida.setText(nombreComida.getNombre());
     }
 
     @Override

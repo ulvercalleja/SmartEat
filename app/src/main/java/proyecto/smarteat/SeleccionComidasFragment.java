@@ -2,33 +2,29 @@ package proyecto.smarteat;
 
 import android.os.Bundle;
 
+import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 
 public class SeleccionComidasFragment extends Fragment {
 
     private RecyclerView rvSeleccionComidas;
     private SeleccionComidasAdapter seleccionComidasAdapter;
-    private List<PojoTipoComida> listaComidas = Arrays.asList(
-            new PojoTipoComida(0, "Croissant"),
-            new PojoTipoComida(0, "Napolitana"),
-            new PojoTipoComida(0, "Pizza"),
-            new PojoTipoComida(0, "Hamburguesa"),
-            new PojoTipoComida(0, "Galletas"),
-            new PojoTipoComida(0, "Ensalada de pollo"),
-            new PojoTipoComida(0, "Filete de ternera"),
-            new PojoTipoComida(0, "Filete de pollo")
-    );
+    private List<PojoAlimentos> listaComidas = new ArrayList<>();
 
     public SeleccionComidasFragment() {
         // Required empty public constructor
@@ -46,8 +42,27 @@ public class SeleccionComidasFragment extends Fragment {
 
         rvSeleccionComidas = view.findViewById(R.id.fscrvSeleccionComidas);
         rvSeleccionComidas.setLayoutManager(new LinearLayoutManager(getContext()));
-        seleccionComidasAdapter = new SeleccionComidasAdapter(listaComidas, getContext());
-        rvSeleccionComidas.setAdapter(seleccionComidasAdapter);
+
+        // Llamada a la API para obtener la lista de alimentos
+        Call<List<PojoAlimentos>> call = ApiAlimentos.getRepo().getAlimentos();
+        call.enqueue(new Callback<List<PojoAlimentos>>() {
+            @Override
+            public void onResponse(Call<List<PojoAlimentos>> call, Response<List<PojoAlimentos>> response) {
+                if (response.isSuccessful()) {
+                    listaComidas = response.body();
+                    // Actualizar el RecyclerView con los datos obtenidos
+                    seleccionComidasAdapter = new SeleccionComidasAdapter(listaComidas, getContext());
+                    rvSeleccionComidas.setAdapter(seleccionComidasAdapter);
+                } else {
+                    Log.e("API Error", "Error en la respuesta de la API: " + response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<PojoAlimentos>> call, Throwable t) {
+                Log.e("API Failure", "Error al realizar la solicitud a la API", t);
+            }
+        });
     }
 
 }
