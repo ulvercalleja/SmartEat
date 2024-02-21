@@ -19,15 +19,32 @@ public class MenuPantalla extends AppCompatActivity {
         setContentView(R.layout.menu_pantalla);
 
         btHome = findViewById(R.id.dspibBotonHome);
+        btCalendario = findViewById(R.id.dspibBotonCalendario);
+        btComida = findViewById(R.id.dspibBotonComida);
+        btBuscar = findViewById(R.id.dspibBotonBuscar);
+        btPerfil = findViewById(R.id.dspibBotonPerfil);
 
         btHome.setOnClickListener(v -> {
             cargarFragmentoDiasSemana();
         });
+
+        btCalendario.setOnClickListener(v -> {
+            cargarFragmentoCalendario();
+        });
+
+        btBuscar.setOnClickListener(v -> {
+            cargarFragmentoBuscar();
+        });
+
+        btPerfil.setOnClickListener(v -> {
+            cargarFragmentoPerfil();
+        });
+
     }
 
     private void cargarFragmentoDiasSemana() {
         // Crear una instancia del fragmento
-        DiasSemanaFragment fragment = new DiasSemanaFragment();
+        DiasSemanaFragment fragmentDiasSemana = new DiasSemanaFragment();
 
         // Obtener el FragmentManager
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -36,9 +53,33 @@ public class MenuPantalla extends AppCompatActivity {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
 
         // Reemplazar el contenido del contenedor con el fragmento
-        transaction.replace(R.id.mpfrFragmentListas, fragment);
+        transaction.replace(R.id.mpfrFragmentListas, fragmentDiasSemana);
 
         // Confirmar la transacción
+        transaction.commit();
+    }
+
+    private void cargarFragmentoCalendario() {
+        CalendarioFragment fragmentCalendario = new CalendarioFragment();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.mpfrFragmentListas, fragmentCalendario);
+        transaction.commit();
+    }
+
+    private void cargarFragmentoBuscar() {
+        BuscarFragment fragmentBuscar = new BuscarFragment();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.mpfrFragmentListas, fragmentBuscar);
+        transaction.commit();
+    }
+
+    private void cargarFragmentoPerfil() {
+        PerfilFragment fragmentPerfil = new PerfilFragment();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.mpfrFragmentListas, fragmentPerfil);
         transaction.commit();
     }
 }
