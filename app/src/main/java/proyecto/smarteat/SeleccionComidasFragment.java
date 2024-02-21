@@ -44,7 +44,7 @@ public class SeleccionComidasFragment extends Fragment {
         rvSeleccionComidas.setLayoutManager(new LinearLayoutManager(getContext()));
 
         // Llamada a la API para obtener la lista de alimentos
-        Call<List<PojoAlimentos>> call = ApiAlimentos.getRepo().getAlimentos();
+        Call<List<PojoAlimentos>> call = ApiAlimentos.getInstancia().getRepo().getAlimentos();
         call.enqueue(new Callback<List<PojoAlimentos>>() {
             @Override
             public void onResponse(Call<List<PojoAlimentos>> call, Response<List<PojoAlimentos>> response) {

@@ -26,7 +26,7 @@ public class SeleccionComidasViewModel extends ViewModel {
     }
 
     private void cargarListaComidas() {
-        ApiAlimentos.getRepo().getAlimentos().enqueue(new Callback<List<PojoAlimentos>>() {
+        ApiAlimentos.getInstancia().getRepo().getAlimentos().enqueue(new Callback<List<PojoAlimentos>>() {
             @Override
             public void onResponse(Call<List<PojoAlimentos>> call, Response<List<PojoAlimentos>> response) {
                 if (response.isSuccessful()) {

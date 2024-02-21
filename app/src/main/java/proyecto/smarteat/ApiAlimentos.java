@@ -16,7 +16,7 @@ public class ApiAlimentos {
 
         repoAlimentos = retrofit.create(RepoAlimentos.class);
     }
-    public static RepoAlimentos getRepo(){
+    public RepoAlimentos getRepo(){
         return repoAlimentos;
     }
 
