@@ -5,26 +5,17 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiAlimentos {
 
-    private static ApiAlimentos seleccionComidas;
-    private static RepoAlimentos repoAlimentos;
+    private static Retrofit retrofit;
+    private static final String BASE_URL = "http://10.0.2.2:8080/";
 
-    private ApiAlimentos() {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:8080/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        repoAlimentos = retrofit.create(RepoAlimentos.class);
-    }
-    public RepoAlimentos getRepo(){
-        return repoAlimentos;
-    }
-
-    public static ApiAlimentos getInstancia() {
-        if(seleccionComidas == null){
-            seleccionComidas =  new ApiAlimentos();
+    public static Retrofit getInstancia() {
+        if (retrofit == null) {
+            retrofit = new Retrofit.Builder()
+                    .baseUrl(BASE_URL)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
         }
-        return seleccionComidas;
+        return retrofit;
     }
 
 }

@@ -6,6 +6,6 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 
 public interface RepoAlimentos {
-    @GET("/alimento/getAll")
+    @GET("/alimentos/getAll")
     Call<List<PojoAlimentos>> getAlimentos();
 }

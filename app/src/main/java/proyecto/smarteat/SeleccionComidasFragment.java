@@ -43,8 +43,11 @@ public class SeleccionComidasFragment extends Fragment {
         rvSeleccionComidas = view.findViewById(R.id.fscrvSeleccionComidas);
         rvSeleccionComidas.setLayoutManager(new LinearLayoutManager(getContext()));
 
+        // Inicializa Retrofit
+        RepoAlimentos apiService = ApiAlimentos.getInstancia().create(RepoAlimentos.class);
+
         // Llamada a la API para obtener la lista de alimentos
-        Call<List<PojoAlimentos>> call = ApiAlimentos.getInstancia().getRepo().getAlimentos();
+        Call<List<PojoAlimentos>> call = apiService.getAlimentos();
         call.enqueue(new Callback<List<PojoAlimentos>>() {
             @Override
             public void onResponse(Call<List<PojoAlimentos>> call, Response<List<PojoAlimentos>> response) {

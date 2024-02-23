@@ -23,25 +23,25 @@ public class SeleccionComidasAdapter extends RecyclerView.Adapter<SeleccionComid
 
     @NonNull
     @Override
-    public SeleccionComidasAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_seleccion_comidas, parent, false);
-        return new SeleccionComidasAdapter.ViewHolder(view);
+        return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull SeleccionComidasAdapter.ViewHolder holder, int position) {
-        PojoAlimentos alimento = listaComida.get(position);
-        holder.alimento.setText(alimento.getNombre());
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        PojoAlimentos nombreComida = listaComida.get(position);
+        holder.nombreComida.setText(nombreComida.getNombre());
     }
 
     @Override
     public int getItemCount() { return listaComida.size(); }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView alimento;
+        TextView nombreComida;
         public ViewHolder(View itemView) {
             super(itemView);
-            alimento = itemView.findViewById(R.id.rsctvNombreComida);
+            nombreComida = itemView.findViewById(R.id.rsctvNombreComida);
         }
     }
 }
