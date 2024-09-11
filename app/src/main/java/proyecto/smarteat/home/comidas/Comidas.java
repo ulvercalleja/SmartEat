@@ -1,4 +1,4 @@
-package proyecto.smarteat;
+package proyecto.smarteat.home.comidas;
 
 public class Comidas {
     private String nombreComida;

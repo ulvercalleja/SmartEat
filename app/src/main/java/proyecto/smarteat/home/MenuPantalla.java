@@ -1,12 +1,16 @@
-package proyecto.smarteat;
+package proyecto.smarteat.home;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.media.Image;
 import android.os.Bundle;
 import android.widget.ImageButton;
+
+import proyecto.smarteat.R;
+import proyecto.smarteat.buscar.BuscarFragment;
+import proyecto.smarteat.calendario.CalendarioFragment;
+import proyecto.smarteat.perfil.PerfilFragment;
 
 
 public class MenuPantalla extends AppCompatActivity {

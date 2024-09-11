@@ -1,11 +1,12 @@
-package proyecto.smarteat;
+package proyecto.smarteat.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageButton;
+
+import proyecto.smarteat.R;
 
 public class InicioPantalla extends AppCompatActivity {
 
@@ -21,7 +22,7 @@ public class InicioPantalla extends AppCompatActivity {
 
         btInicioSesion.setOnClickListener(v -> {
             // Abre la pantalla de inicio de sesión
-            Intent intent = new Intent(InicioPantalla.this, IniciarSesionPantalla.class);
+            Intent intent = new Intent(InicioPantalla.this, LoginPantalla.class);
             startActivity(intent);
         });
     }

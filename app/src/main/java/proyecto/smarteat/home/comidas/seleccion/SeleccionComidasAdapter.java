@@ -1,4 +1,4 @@
-package proyecto.smarteat;
+package proyecto.smarteat.home.comidas.seleccion;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,6 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
+
+import proyecto.smarteat.R;
 
 public class SeleccionComidasAdapter extends RecyclerView.Adapter<SeleccionComidasAdapter.ViewHolder> {
 

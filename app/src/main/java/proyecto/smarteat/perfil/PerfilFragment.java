@@ -1,4 +1,4 @@
-package proyecto.smarteat;
+package proyecto.smarteat.perfil;
 
 import android.os.Bundle;
 
@@ -8,9 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class CalendarioFragment extends Fragment {
+import proyecto.smarteat.R;
 
-    public CalendarioFragment() {
+public class PerfilFragment extends Fragment {
+
+    public PerfilFragment() {
         // Required empty public constructor
     }
 
@@ -18,6 +20,6 @@ public class CalendarioFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_calendario, container, false);
+        return inflater.inflate(R.layout.fragment_perfil, container, false);
     }
 }

@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TusComidasFragment">
+    tools:context=".home.comidas.seleccion.TusComidasFragment">
 
     <Button
         android:id="@+id/tcfbtAnadir"

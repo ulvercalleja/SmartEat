@@ -1,4 +1,4 @@
-package proyecto.smarteat;
+package proyecto.smarteat.home.comidas.seleccion;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +9,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+
+import proyecto.smarteat.R;
+
 public class TusComidasAdapter extends RecyclerView.Adapter<TusComidasAdapter.ViewHolder> {
     private ArrayList<PojoTipoComida> listaComidas;
 

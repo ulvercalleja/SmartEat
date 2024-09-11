@@ -1,4 +1,4 @@
-package proyecto.smarteat;
+package proyecto.smarteat.home.comidas.seleccion;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

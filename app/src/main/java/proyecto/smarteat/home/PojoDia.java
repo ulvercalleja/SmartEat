@@ -1,4 +1,6 @@
-package proyecto.smarteat;
+package proyecto.smarteat.home;
+
+import proyecto.smarteat.home.comidas.seleccion.PojoTipoComida;
 
 public class PojoDia {
     int idPlan;

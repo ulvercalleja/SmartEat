@@ -1,4 +1,4 @@
-package proyecto.smarteat;
+package proyecto.smarteat.home.comidas.seleccion;
 
 import java.util.List;
 

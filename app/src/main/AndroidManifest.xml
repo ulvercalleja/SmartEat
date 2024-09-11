@@ -16,7 +16,7 @@
         android:theme="@style/Theme.SmartEat"
         tools:targetApi="31">
         <activity
-            android:name=".MenuPantalla"
+            android:name=".home.MenuPantalla"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,7 +25,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".RegistroPantalla"
+            android:name=".login.RegistroPantalla"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,7 +34,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".IniciarSesionPantalla"
+            android:name=".login.LoginPantalla"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -43,7 +43,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".InicioPantalla"
+            android:name=".login.InicioPantalla"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

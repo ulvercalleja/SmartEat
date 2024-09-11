@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MenuPantalla">
+    tools:context=".home.MenuPantalla">
 
     <ImageView
         android:id="@+id/dspivMenuHorizontalSuperior"
@@ -176,7 +176,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/mpfrFragmentListas"
-        android:name="proyecto.smarteat.DiasSemanaFragment"
+        android:name="proyecto.smarteat.home.DiasSemanaFragment"
         android:layout_width="0dp"
         android:layout_height="538dp"
         app:layout_constraintEnd_toEndOf="parent"

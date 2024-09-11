@@ -1,4 +1,4 @@
-package proyecto.smarteat;
+package proyecto.smarteat.home;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,8 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.Arrays;
 import java.util.List;
 
-import proyecto.smarteat.DiasSemana;
-import proyecto.smarteat.DiasSemanaAdapter;
+import proyecto.smarteat.R;
 
 public class DiasSemanaFragment extends Fragment {
     private RecyclerView recyclerView;

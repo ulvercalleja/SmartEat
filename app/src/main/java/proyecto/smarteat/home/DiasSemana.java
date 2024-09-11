@@ -1,4 +1,4 @@
-package proyecto.smarteat;
+package proyecto.smarteat.home;
 
 public class DiasSemana {
     private String nombreDia;

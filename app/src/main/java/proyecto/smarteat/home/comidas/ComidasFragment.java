@@ -1,4 +1,4 @@
-package proyecto.smarteat;
+package proyecto.smarteat.home.comidas;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.Arrays;
 import java.util.List;
+
+import proyecto.smarteat.R;
 
 public class ComidasFragment extends Fragment {
     private final String NOMBRE_DIA_INFO = "nombreDia";

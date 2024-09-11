@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "643602076769",
+    "project_id": "smarteat-a325f",
+    "storage_bucket": "smarteat-a325f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:643602076769:android:d60c146fca7f2c2f378620",
+        "android_client_info": {
+          "package_name": "proyecto.smarteat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqIXugfahzMs2k5If_s_hDSkjmEDECqQc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

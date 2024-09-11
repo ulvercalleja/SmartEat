@@ -1,8 +1,7 @@
-package proyecto.smarteat;
+package proyecto.smarteat.home.comidas.seleccion;
 
 import android.os.Bundle;
 
-import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import proyecto.smarteat.R;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
