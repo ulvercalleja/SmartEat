@@ -38,22 +38,26 @@ public class LoginPantalla extends AppCompatActivity {
             String email = etUsuario.getText().toString();
             String password = etContraseña.getText().toString();
 
-            if (email.isEmpty() || password.isEmpty()) {
-                if (email.isEmpty()) {
-                    etUsuario.setError(ERROR_VACIO);
-                } else {
-                    etUsuario.setError(null); // Borra cualquier mensaje de error existente
-                }
-
-                if (password.isEmpty()) {
-                    etContraseña.setError(ERROR_VACIO);
-                } else {
-                    etContraseña.setError(null); // Borra cualquier mensaje de error existente
-                }
-            } else {
-                loginUser(email, password);
-            }
+            checkErrors(email, password); //Comprueba errores, y si no hay ninguno ejecuta la funcion login
         });
+    }
+
+    private void checkErrors(String email, String password) {
+        if (email.isEmpty() || password.isEmpty()) {
+            if (email.isEmpty()) {
+                etUsuario.setError(ERROR_VACIO);
+            } else {
+                etUsuario.setError(null); // Borra cualquier mensaje de error existente
+            }
+
+            if (password.isEmpty()) {
+                etContraseña.setError(ERROR_VACIO);
+            } else {
+                etContraseña.setError(null); // Borra cualquier mensaje de error existente
+            }
+        } else {
+            loginUser(email, password);
+        }
     }
 
     private void loginUser(String email, String password) {
@@ -73,4 +77,5 @@ public class LoginPantalla extends AppCompatActivity {
                     }
                 });
     }
+
 }

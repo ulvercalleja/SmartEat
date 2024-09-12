@@ -53,30 +53,36 @@ public class RegistroPantalla extends AppCompatActivity {
             String passRep = etPassRep.getText().toString();
             String email = etEmail.getText().toString();
 
-            // Validar que ningún campo esté en blanco
-            if (nombre.isEmpty() || pass.isEmpty() || passRep.isEmpty() || email.isEmpty()) {
-                tvError.setText("Todos los campos son requeridos");
-                return;
+            if (checkErrors(nombre, pass, passRep, email)){
+                registrarUser(email, pass);
             }
 
-            // Validar que las contraseñas coincidan
-            if (!pass.equals(passRep)) {
-                tvError.setText("Las contraseñas no coinciden");
-                return;
-            }
-
-            // Validar el formato del correo electrónico usando una expresión regular (regex)
-            String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-            if (!email.matches(emailPattern)) {
-                tvError.setText("Correo electrónico inválido");
-                return;
-            }
-
-            // Si llega hasta aquí, no hay errores
-            tvError.setText(""); // Limpiar el mensaje de error
-
-            registrarUser(email, pass);
         });
+    }
+
+    private Boolean checkErrors(String nombre, String pass, String passRep, String email) {
+        // Validar que ningún campo esté en blanco
+        if (nombre.isEmpty() || pass.isEmpty() || passRep.isEmpty() || email.isEmpty()) {
+            tvError.setText("Todos los campos son requeridos");
+            return false;
+        }
+
+        // Validar que las contraseñas coincidan
+        if (!pass.equals(passRep)) {
+            tvError.setText("Las contraseñas no coinciden");
+            return false;
+        }
+
+        // Validar el formato del correo electrónico usando una expresión regular (regex)
+        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+        if (!email.matches(emailPattern)) {
+            tvError.setText("Correo electrónico inválido");
+            return false;
+        }
+
+        // Si llega hasta aquí, no hay errores
+        tvError.setText(""); // Limpiar el mensaje de error
+        return true;
     }
 
     private void registrarUser(String email, String password) {
@@ -84,8 +90,6 @@ public class RegistroPantalla extends AppCompatActivity {
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
-                        // Registro exitoso
-                        Toast.makeText(RegistroPantalla.this, "Registro exitoso", Toast.LENGTH_SHORT).show();
                         // Aquí podrías redirigir al usuario a otra pantalla o cerrar esta actividad
                         finish();
                     } else {

@@ -2,4 +2,6 @@
     <string name="app_name">SmartEat</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="default_web_client_id">833293098206-m8ffer9b2m0t8vaqtdt3l5nsfugs3ala.apps.googleusercontent.com</string>
 </resources>
