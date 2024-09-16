@@ -3,6 +3,7 @@ package proyecto.smarteat.login;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -64,15 +65,26 @@ public class LoginPantalla extends AppCompatActivity {
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
-                        // Sign in success, update UI with the signed-in user's information
+                        // Inicio de sesión exitoso, obtenemos la información del usuario
                         FirebaseUser user = mAuth.getCurrentUser();
+                        if (user != null) {
+                            String userEmail = user.getEmail();
+                            String userName = user.getDisplayName(); // El nombre puede estar vacío si no se configura
 
-                        // Start the next activity
-                        Intent intent = new Intent(LoginPantalla.this, MenuPantalla.class);
-                        startActivity(intent);
-                        finish(); // Close the login activity
+                            // Guarda los datos del usuario en SharedPreferences
+                            SharedPreferences sharedPreferences = getSharedPreferences("UserSession", MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putString("user_name", userName != null ? userName : "Usuario Anónimo");
+                            editor.putString("user_email", userEmail);
+                            editor.apply();
+
+                            // Navega a la siguiente pantalla (Menú o Perfil)
+                            Intent intent = new Intent(LoginPantalla.this, MenuPantalla.class);
+                            startActivity(intent);
+                            finish(); // Cierra la actividad de login
+                        }
                     } else {
-                        // If sign in fails, display a message to the user.
+                        // Si falla el inicio de sesión, muestra un mensaje al usuario
                         Toast.makeText(LoginPantalla.this, "Error al iniciar sesión: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
                     }
                 });
