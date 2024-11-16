@@ -8,4 +8,5 @@ import retrofit2.http.GET;
 public interface RepoAlimentos {
     @GET("/alimentos/getAll")
     Call<List<PojoAlimentos>> getAlimentos();
+
 }

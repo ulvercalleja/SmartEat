@@ -57,6 +57,7 @@ public class SeleccionComidasFragment extends Fragment {
                     // Actualizar el RecyclerView con los datos obtenidos
                     seleccionComidasAdapter = new SeleccionComidasAdapter(listaComidas, getContext());
                     rvSeleccionComidas.setAdapter(seleccionComidasAdapter);
+
                 } else {
                     Log.e("API Error", "Error en la respuesta de la API: " + response.code());
                 }
@@ -67,6 +68,7 @@ public class SeleccionComidasFragment extends Fragment {
                 Log.e("API Failure", "Error al realizar la solicitud a la API", t);
             }
         });
+
     }
 
 }
