@@ -54,6 +54,7 @@
         android:enabled="false"
         android:fontFamily="@font/roboto_light"
         android:hint="Contraseña actual"
+        android:visibility="gone"
         android:text=""
         android:textAlignment="center"
         android:textColor="#F6E8DD"
@@ -71,6 +72,7 @@
         android:enabled="false"
         android:fontFamily="@font/roboto_light"
         android:hint="Contraseña nueva"
+        android:visibility="gone"
         android:text=""
         android:textAlignment="center"
         android:textColor="#F6E8DD"
@@ -89,7 +91,7 @@
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    app:srcCompat="@drawable/boton_perfil" />
+    app:srcCompat="@drawable/foto_perfil" />
 
 <Button
     android:id="@+id/fpbtEditarPerfil"
@@ -116,4 +118,13 @@
     app:layout_constraintEnd_toEndOf="@+id/fpbtEditarPerfil"
     app:layout_constraintStart_toStartOf="@+id/fpbtEditarPerfil"
     app:layout_constraintTop_toBottomOf="@+id/fpbtEditarPerfil" />
+
+    <ImageView
+        android:id="@+id/fpivCambiarFotoPerfil"
+        android:layout_width="51dp"
+        android:layout_height="47dp"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="@+id/fpivFotoPerfil"
+        app:layout_constraintEnd_toEndOf="@+id/fpivFotoPerfil"
+        app:srcCompat="@drawable/boton_foto_perfil" />
 </androidx.constraintlayout.widget.ConstraintLayout>

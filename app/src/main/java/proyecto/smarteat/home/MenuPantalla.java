@@ -47,7 +47,7 @@ public class MenuPantalla extends AppCompatActivity {
         });
 
         btPerfil.setOnClickListener(v -> {
-            cargarFragmentoPerfil();
+            cargarActividadPerfil();
         });
 
     }
@@ -85,7 +85,7 @@ public class MenuPantalla extends AppCompatActivity {
         transaction.commit();
     }
 
-    private void cargarFragmentoPerfil() {
+    private void cargarActividadPerfil() {
         Intent intent = new Intent(this, ActividadPerfil.class);
         intent.putExtra(LoginPantalla.ID_USUARIO, userId); // Pasar el ID del usuario
         startActivity(intent);

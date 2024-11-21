@@ -1,30 +1,47 @@
 package proyecto.smarteat.perfil;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.TextUtils;
-import android.view.View;
+import android.util.Base64;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import proyecto.smarteat.R;
-import proyecto.smarteat.home.MenuPantalla;
 import proyecto.smarteat.login.LoginPantalla;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ActividadPerfil extends AppCompatActivity {
 
+    private static final int PICK_IMAGE_REQUEST = 1;
+
     Button btCerrarSesion, btEditarPerfil;
-    TextView tvUsername, tvEmail;
     EditText etNombreUsuario, etEmailUsuario,etContrasena,etNuevaContrasena;
-    int userId;
+    ImageView ivCambiarFoto, ivFotoPerfil;
     PerfilViewModel perfilViewModel;
-    String contrasena;
+    int userId;
+    String contrasenaOriginal, nombreUsuarioOriginal, emailOriginal;
     boolean isEditing = false;
 
     @Override
@@ -38,6 +55,8 @@ public class ActividadPerfil extends AppCompatActivity {
         etEmailUsuario = findViewById(R.id.fpetEmail);
         etContrasena = findViewById(R.id.fpetContrasena);
         etNuevaContrasena = findViewById(R.id.fpetContrasenaNueva);
+        ivCambiarFoto = findViewById(R.id.fpivCambiarFotoPerfil);
+        ivFotoPerfil = findViewById(R.id.fpivFotoPerfil);
 
         // Obtener userId del Intent
         Intent intent = getIntent();
@@ -50,7 +69,9 @@ public class ActividadPerfil extends AppCompatActivity {
         perfilViewModel.getPerfil(userId).observe(this, perfil -> {
             etNombreUsuario.setText(perfil.getNombreUsuario());
             etEmailUsuario.setText(perfil.getEmail());
-            contrasena = perfil.getPassword();
+            contrasenaOriginal = perfil.getPassword();
+            nombreUsuarioOriginal = perfil.getNombreUsuario();
+            emailOriginal = perfil.getEmail();
         });
 
         perfilViewModel.getSuccessMessage().observe(this, success -> {
@@ -73,8 +94,6 @@ public class ActividadPerfil extends AppCompatActivity {
 
                 // Mostrar EditText y ocultar TextView
 
-                etNombreUsuario.setVisibility(EditText.VISIBLE);
-                etEmailUsuario.setVisibility(EditText.VISIBLE);
                 etContrasena.setVisibility(EditText.VISIBLE);
                 etNuevaContrasena.setVisibility(EditText.VISIBLE);
                 etNombreUsuario.setEnabled(true);
@@ -86,7 +105,6 @@ public class ActividadPerfil extends AppCompatActivity {
                 isEditing = false;
                 btEditarPerfil.setText("Editar Perfil");
 
-                // Validar los datos antes de guardarlos
                 String nombreUsuario = etNombreUsuario.getText().toString();
                 String email = etEmailUsuario.getText().toString();
                 String contrasenaActual = etContrasena.getText().toString();
@@ -100,30 +118,30 @@ public class ActividadPerfil extends AppCompatActivity {
                 etNuevaContrasena.setVisibility(EditText.GONE);
 
                 // Validar campos
-                if (!TextUtils.isEmpty(nombreUsuario) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(contrasenaActual)) {
+                if (!TextUtils.isEmpty(nombreUsuario) && !TextUtils.isEmpty(email)) {
 
-
-                        if (contrasenaActual.equals(etContrasena.getText().toString())) {
-                            // Si la contraseña es válida y hay una nueva contraseña
-                            if (!TextUtils.isEmpty(nuevaContrasena)) {
-                                PojoUsuario usuario = new PojoUsuario(userId, nombreUsuario, email, nuevaContrasena);
-                                perfilViewModel.editarPerfil(usuario);
-                            } else {
-                                PojoUsuario usuario = new PojoUsuario(userId, nombreUsuario, email, contrasena);
-                                perfilViewModel.editarPerfil(usuario);
-                            }
-                        } else {
+                    if (nombreUsuario.equals(nombreUsuarioOriginal) && email.equals(emailOriginal) && nuevaContrasena.isEmpty()) {
+                        PojoUsuario usuario = new PojoUsuario(userId, nombreUsuario, email, contrasenaOriginal);
+                        perfilViewModel.editarPerfil(usuario);
+                    } else {
+                        // Si hay cambios, validar contraseña si se requiere
+                        if (TextUtils.isEmpty(contrasenaActual) || !contrasenaOriginal.equals(contrasenaActual)) {
                             new AlertDialog.Builder(this)
                                     .setTitle("Error")
                                     .setMessage("La contraseña actual es incorrecta.")
                                     .setPositiveButton("Aceptar", (dialog, which) -> dialog.dismiss())
                                     .show();
+                        } else {
+                            // Si la contraseña es válida y hay una nueva contraseña
+                            if (!TextUtils.isEmpty(nuevaContrasena)) {
+                                PojoUsuario usuario = new PojoUsuario(userId, nombreUsuario, email, nuevaContrasena);
+                                perfilViewModel.editarPerfil(usuario);
+                            } else {
+                                PojoUsuario usuario = new PojoUsuario(userId, nombreUsuario, email, contrasenaOriginal);
+                                perfilViewModel.editarPerfil(usuario);
+                            }
                         }
-
-
-                    etEmailUsuario.setText(nombreUsuario);
-                    etEmailUsuario.setText(email);
-
+                    }
                 } else {
                     new AlertDialog.Builder(this)
                             .setTitle("Error")
@@ -131,7 +149,20 @@ public class ActividadPerfil extends AppCompatActivity {
                             .setPositiveButton("Aceptar", (dialog, which) -> dialog.dismiss())
                             .show();
                 }
+                    etEmailUsuario.setText(nombreUsuario);
+                    etEmailUsuario.setText(email);
             }
+
         });
+
+        ivCambiarFoto.setOnClickListener(view -> openFilePicker());
     }
+    // Abrir selector de imágenes
+    private void openFilePicker() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Seleccion una imagen"), PICK_IMAGE_REQUEST);
+    }
+
 }
