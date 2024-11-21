@@ -2,26 +2,20 @@ package proyecto.smarteat.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import proyecto.smarteat.R;
-
 
 public class RegistroPantalla extends AppCompatActivity {
 
@@ -29,8 +23,6 @@ public class RegistroPantalla extends AppCompatActivity {
     TextView tvError;
     Button btCrear;
 
-    // Firebase Auth instance
-    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,11 +33,8 @@ public class RegistroPantalla extends AppCompatActivity {
         etPass = findViewById(R.id.ispetContraseña);
         etPassRep = findViewById(R.id.pretContraseñaRep);
         etEmail = findViewById(R.id.pretCorreo);
-        tvError =  findViewById(R.id.prtvTextoError);
+        tvError = findViewById(R.id.prtvTextoError);
         btCrear = findViewById(R.id.ispbtCrear);
-
-        // Initialize Firebase Auth
-        mAuth = FirebaseAuth.getInstance();
 
         btCrear.setOnClickListener(v -> {
             String nombre = etNombre.getText().toString();
@@ -53,49 +42,55 @@ public class RegistroPantalla extends AppCompatActivity {
             String passRep = etPassRep.getText().toString();
             String email = etEmail.getText().toString();
 
-            if (checkErrors(nombre, pass, passRep, email)){
-                registrarUser(email, pass);
+            if (checkErrors(nombre, pass, passRep, email)) {
+                registerUser(nombre, email, pass);
             }
-
         });
     }
 
     private Boolean checkErrors(String nombre, String pass, String passRep, String email) {
-        // Validar que ningún campo esté en blanco
         if (nombre.isEmpty() || pass.isEmpty() || passRep.isEmpty() || email.isEmpty()) {
             tvError.setText("Todos los campos son requeridos");
             return false;
         }
 
-        // Validar que las contraseñas coincidan
         if (!pass.equals(passRep)) {
             tvError.setText("Las contraseñas no coinciden");
             return false;
         }
 
-        // Validar el formato del correo electrónico usando una expresión regular (regex)
         String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
         if (!email.matches(emailPattern)) {
             tvError.setText("Correo electrónico inválido");
             return false;
         }
 
-        // Si llega hasta aquí, no hay errores
-        tvError.setText(""); // Limpiar el mensaje de error
+        tvError.setText("");
         return true;
     }
 
-    private void registrarUser(String email, String password) {
-        // Registro en Firebase
-        mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, task -> {
-                    if (task.isSuccessful()) {
-                        // Aquí podrías redirigir al usuario a otra pantalla o cerrar esta actividad
-                        finish();
-                    } else {
-                        // Error en el registro
-                        tvError.setText("Error al registrar: " + task.getException().getMessage());
-                    }
-                });
+    private void registerUser(String nombre, String email, String password) {
+        String url = "http://10.0.2.2:8080/usuarios/addOne";
+
+        RequestQueue queue = Volley.newRequestQueue(this);
+        StringRequest request = new StringRequest(Request.Method.POST, url,
+                response -> {
+                    Toast.makeText(this, "Registro exitoso", Toast.LENGTH_SHORT).show();
+                    finish();
+                },
+                error -> Toast.makeText(this, "Error: " + error.getMessage(), Toast.LENGTH_SHORT).show()) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("nombreUsuario", nombre);
+                params.put("email", email);
+                params.put("password", password);
+                return params;
+            }
+        };
+
+        queue.add(request);
     }
+
+
 }

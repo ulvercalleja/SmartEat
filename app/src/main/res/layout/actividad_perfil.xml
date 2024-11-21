@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".perfil.ActividadPerfil"
+    android:background="@drawable/background_perfil">
+
+    <EditText
+        android:id="@+id/fpetUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="#FFFFFF"
+        android:enabled="false"
+        android:fontFamily="@font/montserrat"
+        android:hint="Usuario"
+        android:text=""
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#F6E8DD"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fpivFotoPerfil" />
+
+    <EditText
+        android:id="@+id/fpetEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#FFFFFF"
+        android:enabled="false"
+        android:fontFamily="@font/roboto_light"
+        android:hint="Email"
+        android:text=""
+        android:textAlignment="center"
+        android:textColor="#F6E8DD"
+        android:textColorHint="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fpetUsername" />
+
+    <EditText
+        android:id="@+id/fpetContrasena"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="#FFFFFF"
+        android:enabled="false"
+        android:fontFamily="@font/roboto_light"
+        android:hint="Contraseña actual"
+        android:text=""
+        android:textAlignment="center"
+        android:textColor="#F6E8DD"
+        android:textColorHint="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fpetEmail" />
+
+    <EditText
+        android:id="@+id/fpetContrasenaNueva"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="#FFFFFF"
+        android:enabled="false"
+        android:fontFamily="@font/roboto_light"
+        android:hint="Contraseña nueva"
+        android:text=""
+        android:textAlignment="center"
+        android:textColor="#F6E8DD"
+        android:textColorHint="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/fpetContrasena"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fpetEmail" />
+
+<ImageView
+    android:id="@+id/fpivFotoPerfil"
+    android:layout_width="150dp"
+    android:layout_height="150dp"
+    android:layout_marginTop="80dp"
+    android:adjustViewBounds="false"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:srcCompat="@drawable/boton_perfil" />
+
+<Button
+    android:id="@+id/fpbtEditarPerfil"
+    android:layout_width="194dp"
+    android:layout_height="61dp"
+    android:layout_marginTop="185dp"
+    android:backgroundTint="#EF5B2D"
+    android:fontFamily="@font/roboto_light"
+    android:text="Editar perfil"
+    android:textSize="24sp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/fpetEmail" />
+
+<Button
+    android:id="@+id/fpbtCerrarSesion"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:backgroundTint="#DDDDDD"
+    android:text="CERRAR SESIÓN"
+    android:textColor="#020202"
+    android:textStyle="bold"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="@+id/fpbtEditarPerfil"
+    app:layout_constraintStart_toStartOf="@+id/fpbtEditarPerfil"
+    app:layout_constraintTop_toBottomOf="@+id/fpbtEditarPerfil" />
+</androidx.constraintlayout.widget.ConstraintLayout>

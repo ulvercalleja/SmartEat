@@ -183,4 +183,13 @@
         app:layout_constraintStart_toStartOf="@+id/dspivMenuHorizontal"
         app:layout_constraintTop_toBottomOf="@+id/dspivMenuHorizontalSuperior" />
 
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/mpfrFragmentListas2"
+        android:name="proyecto.smarteat.home.DiasSemanaFragment"
+        android:layout_width="0dp"
+        android:layout_height="538dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/dspivMenuHorizontal"
+        app:layout_constraintTop_toBottomOf="@+id/dspivMenuHorizontalSuperior" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

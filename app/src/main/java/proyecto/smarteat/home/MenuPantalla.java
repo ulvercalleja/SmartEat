@@ -6,17 +6,18 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.widget.ImageButton;
-
+import android.content.Intent;
 import proyecto.smarteat.R;
 import proyecto.smarteat.buscar.BuscarFragment;
 import proyecto.smarteat.calendario.CalendarioFragment;
-import proyecto.smarteat.perfil.PerfilFragment;
+import proyecto.smarteat.login.LoginPantalla;
+import proyecto.smarteat.perfil.ActividadPerfil;
 
 
 public class MenuPantalla extends AppCompatActivity {
 
     ImageButton btHome, btCalendario, btComida, btBuscar, btPerfil;
-
+    int userId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +28,11 @@ public class MenuPantalla extends AppCompatActivity {
         btComida = findViewById(R.id.dspibBotonComida);
         btBuscar = findViewById(R.id.dspibBotonBuscar);
         btPerfil = findViewById(R.id.dspibBotonPerfil);
+
+        Intent intent = getIntent();
+        if (intent != null && intent.hasExtra(LoginPantalla.ID_USUARIO)) {
+            userId = intent.getIntExtra(LoginPantalla.ID_USUARIO, -1);
+        }
 
         btHome.setOnClickListener(v -> {
             cargarFragmentoDiasSemana();
@@ -80,10 +86,12 @@ public class MenuPantalla extends AppCompatActivity {
     }
 
     private void cargarFragmentoPerfil() {
-        PerfilFragment fragmentPerfil = new PerfilFragment();
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.mpfrFragmentListas, fragmentPerfil);
-        transaction.commit();
+        Intent intent = new Intent(this, ActividadPerfil.class);
+        intent.putExtra(LoginPantalla.ID_USUARIO, userId); // Pasar el ID del usuario
+        startActivity(intent);
+    }
+
+    public int getUserId() {
+        return userId;
     }
 }
