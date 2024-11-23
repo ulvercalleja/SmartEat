@@ -1,15 +1,16 @@
-package proyecto.smarteat.login;
+package proyecto.smarteat.auth;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import proyecto.smarteat.auth.login.RespuestaLogin;
 import proyecto.smarteat.perfil.PojoUsuario;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LoginViewModel extends ViewModel {
+public class AuthViewModel extends ViewModel {
     private MutableLiveData<PojoUsuario> perfil;
     private MutableLiveData<Boolean> successMessage = new MutableLiveData<>();
     public int idPerfil;
@@ -25,7 +26,7 @@ public class LoginViewModel extends ViewModel {
 
     public void generarPerfil(int id) {
         new Thread(() -> {
-            ApiUsuario ser = ApiUsuario.getInstancia();
+            AuthApi ser = AuthApi.getInstancia();
             Call<PojoUsuario> llamada = ser.getRepo().getUsuarioPorId(id);
             llamada.enqueue(new Callback<PojoUsuario>() {
                 @Override
@@ -56,7 +57,7 @@ public class LoginViewModel extends ViewModel {
 
     public void crearUsuario(PojoUsuario usuario) {
         new Thread(() -> {
-            ApiUsuario ser = ApiUsuario.getInstancia();
+            AuthApi ser = AuthApi.getInstancia();
             Call<PojoUsuario> llamada = ser.getRepo().crearUsuario(usuario);
             llamada.enqueue(new Callback<PojoUsuario>() {
                 @Override
@@ -78,7 +79,7 @@ public class LoginViewModel extends ViewModel {
 
     public void login(String email, String password) {
         new Thread(() -> {
-            ApiUsuario ser = ApiUsuario.getInstancia();
+            AuthApi ser = AuthApi.getInstancia();
             Call<RespuestaLogin> call = ser.getRepo().login(email, password);
 
             call.enqueue(new Callback<RespuestaLogin>() {
@@ -86,17 +87,14 @@ public class LoginViewModel extends ViewModel {
                 public void onResponse(Call<RespuestaLogin> call, Response<RespuestaLogin> response) {
                     if (response.isSuccessful()) {
                         respuestaLogin.postValue(response.body());
-                        System.out.println("BIEN");
                     } else {
                         respuestaLogin.postValue(new RespuestaLogin(false, null)); // Asume un constructor para manejar fallos
-                        System.out.println("MAAAL");
                     }
                 }
 
                 @Override
                 public void onFailure(Call<RespuestaLogin> call, Throwable t) {
                     respuestaLogin.postValue(new RespuestaLogin(false, null)); // Asume un constructor para manejar fallos
-                    System.out.println("MAAAL");
                 }
             });
         }).start();

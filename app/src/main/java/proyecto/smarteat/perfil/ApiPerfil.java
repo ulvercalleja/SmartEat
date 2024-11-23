@@ -7,7 +7,7 @@ public class ApiPerfil {
 
     private static ApiPerfil instancia;
     private static RepoPerfil repo;
-    private static final String BASE_URL = "http://10.0.2.2:8080/";
+    private static final String BASE_URL = "http://192.168.0.14:8080/";
 
     private ApiPerfil() {
         Retrofit retrofit = new Retrofit.Builder()

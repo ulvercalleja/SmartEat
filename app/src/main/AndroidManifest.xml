@@ -18,6 +18,7 @@
         android:theme="@style/Theme.SmartEat"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+
         <activity
             android:name=".perfil.ActividadPerfil"
             android:exported="false" />
@@ -25,45 +26,24 @@
             android:name=".SplashActivity"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".home.MenuPantalla"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
-            android:name=".login.RegistroPantalla"
+            android:name=".auth.register.RegistroPantalla"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".auth.login.LoginPantalla"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".auth.InicioPantalla"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".login.LoginPantalla"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".login.InicioPantalla"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -72,5 +52,4 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
     </application>
-
 </manifest>

@@ -1,4 +1,4 @@
-package proyecto.smarteat.login;
+package proyecto.smarteat.auth.login;
 
 public class RespuestaLogin {
 

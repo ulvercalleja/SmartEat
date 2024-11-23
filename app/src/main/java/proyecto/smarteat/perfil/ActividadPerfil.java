@@ -1,39 +1,25 @@
 package proyecto.smarteat.perfil;
 
-import android.app.Activity;
+
 import android.app.AlertDialog;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
+import android.content.SharedPreferences;
+
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.text.TextUtils;
-import android.util.Base64;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Toast;
 
-
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-
-import okhttp3.MediaType;
-import okhttp3.MultipartBody;
-import okhttp3.RequestBody;
 import proyecto.smarteat.R;
-import proyecto.smarteat.login.LoginPantalla;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import proyecto.smarteat.auth.InicioPantalla;
+import proyecto.smarteat.auth.login.LoginPantalla;
 
 public class ActividadPerfil extends AppCompatActivity {
-
+    private static final String SHARED_PREFS = "user_session";
     private static final int PICK_IMAGE_REQUEST = 1;
 
     Button btCerrarSesion, btEditarPerfil;
@@ -84,6 +70,10 @@ public class ActividadPerfil extends AppCompatActivity {
 
                 perfilViewModel.resetSuccessMessage();
             }
+        });
+
+        btCerrarSesion.setOnClickListener((view) -> {
+            logout();
         });
 
         btEditarPerfil.setOnClickListener((vie) -> {
@@ -163,6 +153,18 @@ public class ActividadPerfil extends AppCompatActivity {
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "Seleccion una imagen"), PICK_IMAGE_REQUEST);
+    }
+
+    private void logout() {
+        SharedPreferences.Editor editor = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE).edit();
+        editor.clear(); // Eliminar todos los datos guardados
+        editor.apply();
+
+        // Redirigir al LoginPantalla
+        Intent intent = new Intent(this, InicioPantalla.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        finish();
     }
 
 }

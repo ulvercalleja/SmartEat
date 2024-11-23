@@ -6,8 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-import proyecto.smarteat.login.InicioPantalla;
-import proyecto.smarteat.login.RegistroPantalla;
+import proyecto.smarteat.auth.InicioPantalla;
 
 public class SplashActivity extends AppCompatActivity {
 

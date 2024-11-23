@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".login.LoginPantalla">
+    tools:context=".auth.login.LoginPantalla">
 
     <ImageView
         android:id="@+id/ispivImagenSup"
@@ -93,4 +93,17 @@
         app:layout_constraintEnd_toEndOf="@+id/ispetContraseña"
         app:layout_constraintStart_toStartOf="@+id/isptvTienesCuenta2"
         app:layout_constraintTop_toBottomOf="@+id/isptvTienesCuenta2" />
+
+    <TextView
+        android:id="@+id/isptvError"
+        android:layout_width="0dp"
+        android:layout_height="16dp"
+        android:fontFamily="@font/montserrat"
+        android:textAlignment="center"
+        android:textColor="#E91E47"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/ispetContraseña"
+        app:layout_constraintStart_toStartOf="@+id/ispetContraseña"
+        app:layout_constraintTop_toBottomOf="@+id/ispbtCrear" />
 </androidx.constraintlayout.widget.ConstraintLayout>

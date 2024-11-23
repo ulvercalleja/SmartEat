@@ -10,7 +10,7 @@ import android.content.Intent;
 import proyecto.smarteat.R;
 import proyecto.smarteat.buscar.BuscarFragment;
 import proyecto.smarteat.calendario.CalendarioFragment;
-import proyecto.smarteat.login.LoginPantalla;
+import proyecto.smarteat.auth.login.LoginPantalla;
 import proyecto.smarteat.perfil.ActividadPerfil;
 
 
