@@ -18,10 +18,10 @@ import java.util.List;
 import proyecto.smarteat.R;
 
 public class TusComidasAdapter extends RecyclerView.Adapter<TusComidasAdapter.ViewHolder> {
-    private List<PojoAlimentos> listaComidas;
+    private List<PojoTusComidas> listaComidas;
     private Context context;
 
-    public TusComidasAdapter(List<PojoAlimentos> listaComidas, Context context) {
+    public TusComidasAdapter(List<PojoTusComidas> listaComidas, Context context) {
         this.listaComidas = listaComidas;
         this.context = context;
     }
@@ -35,7 +35,7 @@ public class TusComidasAdapter extends RecyclerView.Adapter<TusComidasAdapter.Vi
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        PojoAlimentos comida = listaComidas.get(position);
+        PojoTusComidas comida = listaComidas.get(position);
 
         holder.nombreComida.setText(comida.getNombre());
         holder.caloriasComida.setText(String.valueOf(comida.getValorCalorico()));

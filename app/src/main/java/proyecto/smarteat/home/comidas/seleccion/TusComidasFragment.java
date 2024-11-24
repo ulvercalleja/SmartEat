@@ -7,7 +7,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
@@ -30,7 +29,7 @@ public class TusComidasFragment extends Fragment {
     private Button btAñadir;
     private RecyclerView rvTusComidas;
     private TusComidasAdapter tusComidasAdapter;
-    private List<PojoAlimentos> listaTusComidas = new ArrayList<>();
+    private List<PojoTusComidas> listaTusComidas = new ArrayList<>();
     private TextView noHayComida;
 
     public TusComidasFragment() {
@@ -64,10 +63,10 @@ public class TusComidasFragment extends Fragment {
         RepoAlimentos apiService = ApiAlimentos.getInstancia().create(RepoAlimentos.class);
 
         // Llamada a la API para obtener la lista de alimentos
-        Call<List<PojoAlimentos>> call = apiService.getMisComidas();
-        call.enqueue(new Callback<List<PojoAlimentos>>() {
+        Call<List<PojoTusComidas>> call = apiService.getMisComidas(1);
+        call.enqueue(new Callback<List<PojoTusComidas>>() {
             @Override
-            public void onResponse(Call<List<PojoAlimentos>> call, Response<List<PojoAlimentos>> response) {
+            public void onResponse(Call<List<PojoTusComidas>> call, Response<List<PojoTusComidas>> response) {
                 if (response.isSuccessful()) {
                     listaTusComidas = response.body();
                     // Actualizar el RecyclerView con los datos obtenidos
@@ -80,7 +79,7 @@ public class TusComidasFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<List<PojoAlimentos>> call, Throwable t) {
+            public void onFailure(Call<List<PojoTusComidas>> call, Throwable t) {
                 Log.e("API Failure", "Error al realizar la solicitud a la API", t);
             }
         });

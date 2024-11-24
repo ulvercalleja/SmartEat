@@ -12,22 +12,6 @@ public class PojoTipoComida implements Serializable {
         this.nombreComida = nombreComida;
     }
 
-    public int getNumeroComidas() {
-        return numeroComidas;
-    }
-
-    public void setNumeroComidas(int numeroComidas) {
-        this.numeroComidas = numeroComidas;
-    }
-
-    public String getNombreComida() {
-        return nombreComida;
-    }
-
-    public void setNombreComida(String nombreComida) {
-        this.nombreComida = nombreComida;
-    }
-
     public static ArrayList<PojoTipoComida> generador(ArrayList<PojoTipoComida> listaComidas){
         ArrayList<PojoTipoComida> listadoApiComidas = new ArrayList<PojoTipoComida>();
 
