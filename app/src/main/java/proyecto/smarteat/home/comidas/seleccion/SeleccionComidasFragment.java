@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -42,7 +43,7 @@ public class SeleccionComidasFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         rvSeleccionComidas = view.findViewById(R.id.fscrvSeleccionComidas);
-        rvSeleccionComidas.setLayoutManager(new LinearLayoutManager(getContext()));
+        rvSeleccionComidas.setLayoutManager(new GridLayoutManager(getContext(), 2));
 
         // Inicializa Retrofit
         RepoAlimentos apiService = ApiAlimentos.getInstancia().create(RepoAlimentos.class);

@@ -11,7 +11,7 @@
         android:id="@+id/tcfbtAnadir"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="62dp"
         android:backgroundTint="#BA4A4A"
         android:fontFamily="@font/montserrat"
         android:text="+"
@@ -25,9 +25,37 @@
         android:id="@+id/ftcrvTusComidas"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tcfbtAnadir" />
+
+    <TextView
+        android:id="@+id/ftctvAñadeAqui"
+        android:layout_width="96dp"
+        android:layout_height="33dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/roboto_light"
+        android:text="¡Añade mas comidas!"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tcfbtAnadir"
+        app:layout_constraintEnd_toEndOf="@+id/tcfbtAnadir"
+        app:layout_constraintStart_toStartOf="@+id/tcfbtAnadir" />
+
+    <TextView
+        android:id="@+id/ftctvNoHayComida"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:text="¡Vaya! Parece que aún no has añadido ninguna comida a tu lista :("
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ftcrvTusComidas" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

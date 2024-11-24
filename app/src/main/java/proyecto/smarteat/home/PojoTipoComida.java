@@ -1,4 +1,4 @@
-package proyecto.smarteat.home.comidas.seleccion;
+package proyecto.smarteat.home;
 
 import java.io.Serializable;
 import java.util.ArrayList;

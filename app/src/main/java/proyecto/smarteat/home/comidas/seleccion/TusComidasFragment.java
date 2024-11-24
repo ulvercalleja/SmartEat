@@ -6,19 +6,32 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import proyecto.smarteat.R;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class TusComidasFragment extends Fragment {
 
-    Button btAñadir;
+    private Button btAñadir;
+    private RecyclerView rvTusComidas;
+    private TusComidasAdapter tusComidasAdapter;
+    private List<PojoAlimentos> listaTusComidas = new ArrayList<>();
+    private TextView noHayComida;
 
     public TusComidasFragment() {
         // Required empty public constructor
@@ -35,6 +48,43 @@ public class TusComidasFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        noHayComida = view.findViewById(R.id.ftctvNoHayComida);
+        rvTusComidas = view.findViewById(R.id.ftcrvTusComidas);
+        rvTusComidas.setLayoutManager(new GridLayoutManager(getContext(), 2));
+
+        tusComidasAdapter = new TusComidasAdapter(listaTusComidas, getContext());
+
+        if (tusComidasAdapter.getItemCount() == 0){ //Si no hay ninguna comida
+            noHayComida.setVisibility(View.VISIBLE);
+        } else {
+            noHayComida.setVisibility(View.GONE);
+        }
+
+        // Inicializa Retrofit
+        RepoAlimentos apiService = ApiAlimentos.getInstancia().create(RepoAlimentos.class);
+
+        // Llamada a la API para obtener la lista de alimentos
+        Call<List<PojoAlimentos>> call = apiService.getMisComidas();
+        call.enqueue(new Callback<List<PojoAlimentos>>() {
+            @Override
+            public void onResponse(Call<List<PojoAlimentos>> call, Response<List<PojoAlimentos>> response) {
+                if (response.isSuccessful()) {
+                    listaTusComidas = response.body();
+                    // Actualizar el RecyclerView con los datos obtenidos
+
+                    rvTusComidas.setAdapter(tusComidasAdapter);
+
+                } else {
+                    Log.e("API Error", "Error en la respuesta de la API: " + response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<PojoAlimentos>> call, Throwable t) {
+                Log.e("API Failure", "Error al realizar la solicitud a la API", t);
+            }
+        });
+
         btAñadir = view.findViewById(R.id.tcfbtAnadir);
 
         // Set click listener for the button
@@ -48,9 +98,6 @@ public class TusComidasFragment extends Fragment {
                     .addToBackStack(null)  // Opcional: permite volver al fragmento anterior
                     .commit();
         });
-
-        RecyclerView recyclerView = view.findViewById(R.id.ftcrvTusComidas);
-        recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
 
     }
 }

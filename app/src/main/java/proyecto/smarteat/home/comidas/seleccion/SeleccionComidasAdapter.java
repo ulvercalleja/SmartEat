@@ -3,6 +3,7 @@ package proyecto.smarteat.home.comidas.seleccion;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import proyecto.smarteat.R;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class SeleccionComidasAdapter extends RecyclerView.Adapter<SeleccionComidasAdapter.ViewHolder> {
 
@@ -39,6 +43,7 @@ public class SeleccionComidasAdapter extends RecyclerView.Adapter<SeleccionComid
 
         // Mostrar el nombre
         holder.nombreComida.setText(alimento.getNombre());
+        holder.caloriasComida.setText(String.valueOf(alimento.getValorCalorico()) + " Kcal");
 
         // Decodificar Base64 a byte[] y luego a Bitmap
         String base64Image = alimento.getImagen();
@@ -50,19 +55,45 @@ public class SeleccionComidasAdapter extends RecyclerView.Adapter<SeleccionComid
             // Placeholder si no hay imagen
             holder.imagenComida.setImageResource(R.drawable.comida_almuerzo);
         }
+
+        // Configurar clic en el elemento
+        holder.itemView.setOnClickListener(v -> {
+            // Inicializa Retrofit
+            RepoAlimentos apiService = ApiAlimentos.getInstancia().create(RepoAlimentos.class);
+
+            // Llamada a la API para obtener la lista de alimentos
+            Call<Void> call = apiService.addComida(alimento);
+            call.enqueue(new Callback<Void>() {
+                @Override
+                public void onResponse(Call<Void> call, Response<Void> response) {
+                    if (response.isSuccessful()) {
+                        Log.d("API respuesta", "Comida guardada correctamente");
+                    } else {
+                        Log.e("API respuesta", "Error en la respuesta de la API: " + response.code());
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Void> call, Throwable t) {
+                    Log.e("API respuesta", "Error al realizar la solicitud a la API", t);
+                }
+            });
+        });
+
     }
 
     @Override
     public int getItemCount() { return listaComida.size(); }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView nombreComida;
         ImageView imagenComida;
+        TextView nombreComida, caloriasComida;
 
         public ViewHolder(View itemView) {
             super(itemView);
+            imagenComida = itemView.findViewById(R.id.rscivImagenComida);
             nombreComida = itemView.findViewById(R.id.rsctvNombreComida);
-            imagenComida = itemView.findViewById(R.id.rsctvImagenComida);
+            caloriasComida = itemView.findViewById(R.id.rsctvCaloriasComida);
         }
 
     }

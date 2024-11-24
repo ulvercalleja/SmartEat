@@ -1,22 +1,29 @@
 package proyecto.smarteat.home.comidas.seleccion;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import proyecto.smarteat.R;
 
 public class TusComidasAdapter extends RecyclerView.Adapter<TusComidasAdapter.ViewHolder> {
-    private ArrayList<PojoTipoComida> listaComidas;
+    private List<PojoAlimentos> listaComidas;
+    private Context context;
 
-    public TusComidasAdapter(ArrayList<PojoTipoComida> listaComidas) {
+    public TusComidasAdapter(List<PojoAlimentos> listaComidas, Context context) {
         this.listaComidas = listaComidas;
+        this.context = context;
     }
 
     @NonNull
@@ -28,9 +35,23 @@ public class TusComidasAdapter extends RecyclerView.Adapter<TusComidasAdapter.Vi
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        PojoTipoComida comida = listaComidas.get(position);
-        holder.nombreComida.setText(comida.getNombreComida());
-        holder.numeroComidas.setText(String.valueOf(comida.getNumeroComidas()));
+        PojoAlimentos comida = listaComidas.get(position);
+
+        holder.nombreComida.setText(comida.getNombre());
+        holder.caloriasComida.setText(String.valueOf(comida.getValorCalorico()));
+
+        // Decodificar Base64 a byte[] y luego a Bitmap
+        String base64Image = comida.getImagen();
+        if (base64Image != null && !base64Image.isEmpty()) {
+            byte[] decodedString = android.util.Base64.decode(base64Image, android.util.Base64.DEFAULT);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+            holder.imagenComida.setImageBitmap(bitmap);
+        } else {
+            // Placeholder si no hay imagen
+            holder.imagenComida.setImageResource(R.drawable.comida_almuerzo);
+        }
+
+
     }
 
     @Override
@@ -39,13 +60,14 @@ public class TusComidasAdapter extends RecyclerView.Adapter<TusComidasAdapter.Vi
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView nombreComida;
-        TextView numeroComidas;
+        ImageView imagenComida;
+        TextView nombreComida, caloriasComida;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            nombreComida = itemView.findViewById(R.id.nombreComida);
-            numeroComidas = itemView.findViewById(R.id.numeroComidas);
+            imagenComida = itemView.findViewById(R.id.rtcivImagenComida);
+            nombreComida = itemView.findViewById(R.id.rtctvNombreComida);
+            caloriasComida = itemView.findViewById(R.id.rtctvCaloriasComida);
         }
     }
 }
