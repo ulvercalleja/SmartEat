@@ -12,8 +12,8 @@ public interface RepoAlimentos {
     @GET("/alimentos/getAll")
     Call<List<PojoAlimentos>> getAlimentos();
 
-    @POST("/tuscomidas/addOne")
-    Call<Void> addComida(@Body PojoAlimentos alimento);
+    @POST("/tuscomidas/addOne/{usuario_id}")
+    Call<Void> addComida(@Path("usuario_id") int usuarioId, @Body PojoAlimentos alimento);
 
     @GET("/tuscomidas/getAll/{usuario_id}")
     Call<List<PojoTusComidas>> getMisComidas(@Path("usuario_id") int usuarioId);

@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import proyecto.smarteat.R;
+import proyecto.smarteat.home.MenuPantalla;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -41,6 +42,15 @@ public class SeleccionComidasAdapter extends RecyclerView.Adapter<SeleccionComid
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         PojoAlimentos alimento = listaComida.get(position);
 
+        // Obtén el userId desde la actividad asociada
+        int idUsuario; // Valor predeterminado
+        if (context instanceof MenuPantalla) { // Asegúrate de que el contexto sea de la clase correcta
+            idUsuario = ((MenuPantalla) context).getUserId();
+        } else {
+            idUsuario = -1;
+        }
+        System.out.println("User ID obtenido: " + idUsuario);
+
         // Mostrar el nombre
         holder.nombreComida.setText(alimento.getNombre());
         holder.caloriasComida.setText(String.valueOf(alimento.getValorCalorico()) + " Kcal");
@@ -58,11 +68,12 @@ public class SeleccionComidasAdapter extends RecyclerView.Adapter<SeleccionComid
 
         // Configurar clic en el elemento
         holder.itemView.setOnClickListener(v -> {
+
             // Inicializa Retrofit
             RepoAlimentos apiService = ApiAlimentos.getInstancia().create(RepoAlimentos.class);
 
             // Llamada a la API para obtener la lista de alimentos
-            Call<Void> call = apiService.addComida(alimento);
+            Call<Void> call = apiService.addComida(idUsuario, alimento);
             call.enqueue(new Callback<Void>() {
                 @Override
                 public void onResponse(Call<Void> call, Response<Void> response) {

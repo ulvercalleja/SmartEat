@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,6 +18,7 @@ import java.util.List;
 import proyecto.smarteat.R;
 
 public class DiasSemanaFragment extends Fragment {
+
     private RecyclerView recyclerView;
     private DiasSemanaAdapter diasemanaAdapter;
     private List<DiasSemana> listaDiaSemana = Arrays.asList(
@@ -32,6 +34,7 @@ public class DiasSemanaFragment extends Fragment {
     public DiasSemanaFragment() {
         // Required empty public constructor
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

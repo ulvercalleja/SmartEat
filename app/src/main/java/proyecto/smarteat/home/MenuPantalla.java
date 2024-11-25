@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import android.widget.ImageButton;
 import android.content.Intent;
+
 import proyecto.smarteat.R;
 import proyecto.smarteat.buscar.BuscarFragment;
 import proyecto.smarteat.calendario.CalendarioFragment;
@@ -33,6 +34,8 @@ public class MenuPantalla extends AppCompatActivity {
         if (intent != null && intent.hasExtra(LoginPantalla.ID_USUARIO)) {
             userId = intent.getIntExtra(LoginPantalla.ID_USUARIO, -1);
         }
+
+        System.out.println("ID USUARIO" + userId);
 
         btHome.setOnClickListener(v -> {
             cargarFragmentoDiasSemana();
