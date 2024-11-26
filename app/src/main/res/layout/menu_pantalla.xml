@@ -30,11 +30,13 @@
         app:layout_constraintTop_toBottomOf="@+id/mpfrFragmentListas"
         app:srcCompat="@drawable/menu_horizontal_inferior" />
 
+    <!-- Contenedor horizontal para los botones -->
     <ImageButton
         android:id="@+id/dspibBotonHome"
-        android:layout_width="35dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="48dp"
+        android:layout_width="45dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginBottom="8dp"
         android:adjustViewBounds="true"
         android:background="@null"
         android:scaleType="centerCrop"
@@ -47,25 +49,27 @@
         android:id="@+id/dsptvHome"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:fontFamily="@font/montserrat"
         android:text="Home"
         android:textColor="#FDFDFD"
-        android:textSize="12sp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@+id/dspibBotonHome"
         app:layout_constraintStart_toStartOf="@+id/dspibBotonHome"
         app:layout_constraintTop_toBottomOf="@+id/dspibBotonHome" />
 
     <ImageButton
         android:id="@+id/dspibBotonCalendario"
-        android:layout_width="35dp"
-        android:layout_height="30dp"
+        android:layout_width="45dp"
+        android:layout_height="40dp"
         android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
         android:adjustViewBounds="true"
         android:background="@null"
         android:scaleType="centerCrop"
         android:src="@drawable/boton_calendario"
         app:layout_constraintBottom_toBottomOf="@+id/dspibBotonHome"
+        app:layout_constraintEnd_toStartOf="@+id/dspibBotonBuscar"
         app:layout_constraintStart_toEndOf="@+id/dspibBotonHome"
         app:layout_constraintTop_toTopOf="@+id/dspibBotonHome" />
 
@@ -73,100 +77,74 @@
         android:id="@+id/dsptvCalendario"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:fontFamily="@font/montserrat"
         android:text="Calendario"
         android:textColor="#FDFDFD"
-        android:textSize="12sp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@+id/dspibBotonCalendario"
         app:layout_constraintStart_toStartOf="@+id/dspibBotonCalendario"
         app:layout_constraintTop_toBottomOf="@+id/dspibBotonCalendario" />
 
     <ImageButton
-        android:id="@+id/dspibBotonComida"
-        android:layout_width="35dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="32dp"
-        android:adjustViewBounds="true"
-        android:background="@null"
-        android:scaleType="centerCrop"
-        android:src="@drawable/boton_comida"
-        app:layout_constraintBottom_toBottomOf="@+id/dspibBotonCalendario"
-        app:layout_constraintStart_toEndOf="@+id/dspibBotonCalendario"
-        app:layout_constraintTop_toTopOf="@+id/dspibBotonCalendario" />
-
-    <TextView
-        android:id="@+id/dsptvComida"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/montserrat"
-        android:text="Comida"
-        android:textColor="#FDFDFD"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/dspibBotonComida"
-        app:layout_constraintStart_toStartOf="@+id/dspibBotonComida"
-        app:layout_constraintTop_toBottomOf="@+id/dspibBotonComida" />
-
-    <ImageButton
         android:id="@+id/dspibBotonBuscar"
-        android:layout_width="35dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="32dp"
+        android:layout_width="45dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="32dp"
         android:adjustViewBounds="true"
         android:background="@null"
         android:scaleType="centerCrop"
         android:src="@drawable/boton_buscar"
-        app:layout_constraintBottom_toBottomOf="@+id/dspibBotonComida"
-        app:layout_constraintStart_toEndOf="@+id/dspibBotonComida"
-        app:layout_constraintTop_toTopOf="@+id/dspibBotonComida" />
+        app:layout_constraintBottom_toBottomOf="@+id/dspibBotonPerfil"
+        app:layout_constraintEnd_toStartOf="@+id/dspibBotonPerfil"
+        app:layout_constraintTop_toTopOf="@+id/dspibBotonPerfil" />
 
     <TextView
         android:id="@+id/dsptvBuscar"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:fontFamily="@font/montserrat"
         android:text="Buscar"
         android:textColor="#FDFDFD"
-        android:textSize="12sp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@+id/dspibBotonBuscar"
         app:layout_constraintStart_toStartOf="@+id/dspibBotonBuscar"
         app:layout_constraintTop_toBottomOf="@+id/dspibBotonBuscar" />
 
     <ImageButton
         android:id="@+id/dspibBotonPerfil"
-        android:layout_width="35dp"
-        android:layout_height="31dp"
-        android:layout_marginStart="32dp"
+        android:layout_width="45dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="68dp"
+        android:layout_marginBottom="8dp"
         android:adjustViewBounds="true"
         android:background="@null"
         android:scaleType="centerCrop"
         android:src="@drawable/foto_perfil"
-        app:layout_constraintBottom_toBottomOf="@+id/dspibBotonBuscar"
-        app:layout_constraintStart_toEndOf="@+id/dspibBotonBuscar"
-        app:layout_constraintTop_toTopOf="@+id/dspibBotonBuscar" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/dspivMenuHorizontal" />
 
     <TextView
         android:id="@+id/dsptvPerfil"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:fontFamily="@font/montserrat"
         android:text="Perfil"
         android:textColor="#FDFDFD"
-        android:textSize="12sp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@+id/dspibBotonPerfil"
         app:layout_constraintStart_toStartOf="@+id/dspibBotonPerfil"
         app:layout_constraintTop_toBottomOf="@+id/dspibBotonPerfil" />
-
     <TextView
         android:id="@+id/dsptvTuPlan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:fontFamily="@font/montserrat"
-        android:text="Tu plan semanal"
+        android:text="Tu plan diario"
         android:textColor="#FBFBFB"
         android:textSize="24sp"
         android:typeface="normal"
@@ -176,7 +154,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/mpfrFragmentListas"
-        android:name="proyecto.smarteat.home.DiasSemanaFragment"
+        android:name="proyecto.smarteat.home.comidas.ComidasFragment"
         android:layout_width="0dp"
         android:layout_height="538dp"
         app:layout_constraintEnd_toEndOf="parent"

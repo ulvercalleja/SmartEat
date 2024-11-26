@@ -68,12 +68,6 @@ public class TusComidasFragment extends Fragment {
 
         tusComidasAdapter = new TusComidasAdapter(listaTusComidas, getContext());
 
-        if (tusComidasAdapter.getItemCount() == 0){ //Si no hay ninguna comida
-            noHayComida.setVisibility(View.VISIBLE);
-        } else {
-            noHayComida.setVisibility(View.GONE);
-        }
-
         // Inicializa Retrofit
         RepoAlimentos apiService = ApiAlimentos.getInstancia().create(RepoAlimentos.class);
 
@@ -99,6 +93,12 @@ public class TusComidasFragment extends Fragment {
             }
         });
 
+        if (tusComidasAdapter.getItemCount() == 0){ //Si no hay ninguna comida
+            noHayComida.setVisibility(View.VISIBLE);
+        } else {
+            noHayComida.setVisibility(View.GONE);
+        }
+        
         btAñadir = view.findViewById(R.id.tcfbtAnadir);
 
         // Set click listener for the button

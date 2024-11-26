@@ -157,6 +157,7 @@ public class SeleccionComidasAdapter extends RecyclerView.Adapter<SeleccionComid
             configureDonutChart(pieChartHidratos);
             configureDonutChart(pieChartProteinas);
         }
+
         private void configureDonutChart(PieChart pieChart) {
             pieChart.setDrawHoleEnabled(true); // Habilita el agujero en el centro
             pieChart.setHoleColor(Color.WHITE); // Color del agujero

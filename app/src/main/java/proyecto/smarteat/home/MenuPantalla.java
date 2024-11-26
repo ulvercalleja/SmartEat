@@ -12,6 +12,7 @@ import proyecto.smarteat.R;
 import proyecto.smarteat.buscar.BuscarFragment;
 import proyecto.smarteat.calendario.CalendarioFragment;
 import proyecto.smarteat.auth.login.LoginPantalla;
+import proyecto.smarteat.home.comidas.ComidasFragment;
 import proyecto.smarteat.perfil.ActividadPerfil;
 
 
@@ -26,7 +27,6 @@ public class MenuPantalla extends AppCompatActivity {
 
         btHome = findViewById(R.id.dspibBotonHome);
         btCalendario = findViewById(R.id.dspibBotonCalendario);
-        btComida = findViewById(R.id.dspibBotonComida);
         btBuscar = findViewById(R.id.dspibBotonBuscar);
         btPerfil = findViewById(R.id.dspibBotonPerfil);
 
@@ -57,7 +57,7 @@ public class MenuPantalla extends AppCompatActivity {
 
     private void cargarFragmentoDiasSemana() {
         // Crear una instancia del fragmento
-        DiasSemanaFragment fragmentDiasSemana = new DiasSemanaFragment();
+        ComidasFragment fragmentDiasSemana = new ComidasFragment();
 
         // Obtener el FragmentManager
         FragmentManager fragmentManager = getSupportFragmentManager();
