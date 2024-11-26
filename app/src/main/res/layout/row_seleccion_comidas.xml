@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
@@ -46,6 +47,103 @@
             app:layout_constraintEnd_toEndOf="@+id/rsctvNombreComida"
             app:layout_constraintStart_toStartOf="@+id/rsctvNombreComida"
             app:layout_constraintTop_toBottomOf="@+id/rsctvNombreComida" />
+
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/rscpcGrasas"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/rscpcHidratos"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/rscpcHidratos" />
+
+        <!-- Gráfico circular para hidratos -->
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/rscpcHidratos"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toStartOf="@+id/rscpcProteinas"
+            app:layout_constraintStart_toEndOf="@+id/rscpcGrasas"
+            app:layout_constraintTop_toBottomOf="@+id/rsctvCaloriasComida"/>
+
+        <!-- Gráfico circular para proteínas -->
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/rscpcProteinas"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/rscpcHidratos"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/rscpcHidratos" />
+
+        <TextView
+            android:id="@+id/rsctvGrasasGramos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="45gr"
+            android:textSize="9dp"
+            app:layout_constraintBottom_toBottomOf="@+id/rscpcGrasas"
+            app:layout_constraintEnd_toEndOf="@+id/rscpcGrasas"
+            app:layout_constraintStart_toStartOf="@+id/rscpcGrasas"
+            app:layout_constraintTop_toTopOf="@+id/rscpcGrasas" />
+
+        <TextView
+            android:id="@+id/rsctvGrasas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Grasas"
+            android:textSize="10dp"
+            app:layout_constraintEnd_toEndOf="@+id/rscpcGrasas"
+            app:layout_constraintStart_toStartOf="@+id/rscpcGrasas"
+            app:layout_constraintTop_toBottomOf="@+id/rscpcGrasas" />
+
+        <TextView
+            android:id="@+id/rsctvHidratosGramos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="45gr"
+            android:textSize="9dp"
+            app:layout_constraintBottom_toBottomOf="@+id/rscpcHidratos"
+            app:layout_constraintEnd_toEndOf="@+id/rscpcHidratos"
+            app:layout_constraintStart_toStartOf="@+id/rscpcHidratos"
+            app:layout_constraintTop_toTopOf="@+id/rscpcHidratos" />
+
+        <TextView
+            android:id="@+id/rsctvHidratos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Hidratos"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="@+id/rscpcHidratos"
+            app:layout_constraintStart_toStartOf="@+id/rscpcHidratos"
+            app:layout_constraintTop_toBottomOf="@+id/rscpcHidratos" />
+
+        <TextView
+            android:id="@+id/rsctvProteinasGramos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="45gr"
+            android:textSize="9dp"
+            app:layout_constraintBottom_toBottomOf="@+id/rscpcProteinas"
+            app:layout_constraintEnd_toEndOf="@+id/rscpcProteinas"
+            app:layout_constraintStart_toStartOf="@+id/rscpcProteinas"
+            app:layout_constraintTop_toTopOf="@+id/rscpcProteinas" />
+
+        <TextView
+            android:id="@+id/rsctvProteinas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Proteínas"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="@+id/rscpcProteinas"
+            app:layout_constraintStart_toStartOf="@+id/rscpcProteinas"
+            app:layout_constraintTop_toBottomOf="@+id/rscpcProteinas" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

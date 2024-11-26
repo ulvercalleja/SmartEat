@@ -38,7 +38,7 @@ public class TusComidasAdapter extends RecyclerView.Adapter<TusComidasAdapter.Vi
         PojoTusComidas comida = listaComidas.get(position);
 
         holder.nombreComida.setText(comida.getNombre());
-        holder.caloriasComida.setText(String.valueOf(comida.getValorCalorico()));
+        holder.caloriasComida.setText(String.valueOf(comida.getValorCalorico()) + " Kcal");
 
         // Decodificar Base64 a byte[] y luego a Bitmap
         String base64Image = comida.getImagen();

@@ -7,11 +7,17 @@ public class PojoAlimentos implements Serializable {
     private String nombre;
     private int valorCalorico;
     private String imagen;
+    private int grasas;
+    private int proteinas;
+    private int hidratos;
 
-    public PojoAlimentos(int valorCalorico, String nombre, String imagen) {
+    public PojoAlimentos(int valorCalorico, String nombre, String imagen, int grasas, int proteinas, int hidratos) {
         this.nombre = nombre;
         this.valorCalorico = valorCalorico;
         this.imagen = imagen;
+        this.grasas = grasas;
+        this.proteinas = proteinas;
+        this.hidratos = hidratos;
     }
 
     public String getNombre() {
@@ -24,6 +30,19 @@ public class PojoAlimentos implements Serializable {
 
     public int getValorCalorico() {
         return valorCalorico;
+    }
+
+    public int getGrasas() {
+        return grasas;
+    }
+
+
+    public int getProteinas() {
+        return proteinas;
+    }
+
+    public int getHidratos() {
+        return hidratos;
     }
 
     public int getId() {
