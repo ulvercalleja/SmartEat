@@ -40,8 +40,9 @@
         android:background="@null"
         android:scaleType="centerCrop"
         android:src="@drawable/boton_registro_correo"
-        app:layout_constraintTop_toBottomOf="@+id/iptvIdentificate"
-        tools:layout_editor_absoluteX="39dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iptvIdentificate" />
 
     <TextView
         android:id="@+id/iptvRegistrarseCorreo"

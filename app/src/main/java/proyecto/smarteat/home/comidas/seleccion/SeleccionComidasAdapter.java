@@ -14,9 +14,7 @@ import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
-import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.utils.ColorTemplate;
-import com.github.mikephil.charting.charts.PieChart;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 

@@ -13,7 +13,7 @@ import proyecto.smarteat.home.MenuPantalla;
 
 public class InicioPantalla extends AppCompatActivity {
 
-    ImageButton btGoogle, btRegistroCorreo, btInicioSesion;
+    ImageButton btRegistroCorreo, btInicioSesion;
     // Agregar estas constantes
     private static final String SHARED_PREFS = "user_session";
     private static final String KEY_USER_ID = "user_id";
@@ -23,7 +23,6 @@ public class InicioPantalla extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.inicio_pantalla);
 
-        btGoogle = findViewById(R.id.ipibBotonGoogle);
         btRegistroCorreo = findViewById(R.id.ipibBotonCorreo);
         btInicioSesion = findViewById(R.id.ipibIniciarSesion);
 

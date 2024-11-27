@@ -1,14 +1,8 @@
 package proyecto.smarteat.perfil;
 
-import android.graphics.Bitmap;
-import android.util.Base64;
-import android.widget.Toast;
-
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
-
-import java.io.ByteArrayOutputStream;
 
 import retrofit2.Call;
 import retrofit2.Callback;

@@ -8,12 +8,18 @@ public class PojoTusComidas implements Serializable {
     private int valorCalorico;
     private String imagen;
     private Long usuario_id;
+    private int grasas;
+    private int proteinas;
+    private int hidratos;
 
-    public PojoTusComidas(int valorCalorico, String nombre, String imagen, Long usuario_id) {
+    public PojoTusComidas(int valorCalorico, String nombre, String imagen, Long usuario_id, int grasas, int proteinas, int hidratos) {
         this.nombre = nombre;
         this.valorCalorico = valorCalorico;
         this.imagen = imagen;
         this.usuario_id = usuario_id;
+        this.grasas = grasas;
+        this.proteinas = proteinas;
+        this.hidratos = hidratos;
     }
 
     public String getNombre() {
@@ -26,6 +32,19 @@ public class PojoTusComidas implements Serializable {
 
     public int getValorCalorico() {
         return valorCalorico;
+    }
+
+    public int getGrasas() {
+        return grasas;
+    }
+
+
+    public int getProteinas() {
+        return proteinas;
+    }
+
+    public int getHidratos() {
+        return hidratos;
     }
 
     public Long getUsuario_id() {
