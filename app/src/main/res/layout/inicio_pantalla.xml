@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".auth.InicioPantalla">
+    tools:context=".InicioPantalla">
 
     <ImageView
         android:id="@+id/ipivImagenSup"
@@ -32,44 +32,16 @@
         app:layout_constraintTop_toBottomOf="@+id/ipivImagenSup" />
 
     <ImageButton
-        android:id="@+id/ipibBotonGoogle"
+        android:id="@+id/ipibBotonCorreo"
         android:layout_width="333dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:adjustViewBounds="true"
-        android:background="@null"
-        android:scaleType="centerCrop"
-        android:src="@drawable/boton_log_google"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iptvIdentificate" />
-
-    <TextView
-        android:id="@+id/iptvRegistrarseGoogle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_marginEnd="70dp"
-        android:fontFamily="@font/montserrat"
-        android:text="Inicia sesión con Google"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="@+id/ipibBotonGoogle"
-        app:layout_constraintEnd_toEndOf="@+id/ipibBotonGoogle"
-        app:layout_constraintStart_toStartOf="@+id/ipibBotonGoogle"
-        app:layout_constraintTop_toTopOf="@+id/ipibBotonGoogle" />
-
-    <ImageButton
-        android:id="@+id/ipibBotonCorreo"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="32dp"
         android:adjustViewBounds="true"
         android:background="@null"
         android:scaleType="centerCrop"
         android:src="@drawable/boton_registro_correo"
-        app:layout_constraintEnd_toEndOf="@+id/ipibBotonGoogle"
-        app:layout_constraintStart_toStartOf="@+id/ipibBotonGoogle"
-        app:layout_constraintTop_toBottomOf="@+id/ipibBotonGoogle" />
+        app:layout_constraintTop_toBottomOf="@+id/iptvIdentificate"
+        tools:layout_editor_absoluteX="39dp" />
 
     <TextView
         android:id="@+id/iptvRegistrarseCorreo"

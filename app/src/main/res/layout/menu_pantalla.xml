@@ -9,7 +9,7 @@
     <ImageView
         android:id="@+id/dspivMenuHorizontalSuperior"
         android:layout_width="0dp"
-        android:layout_height="99dp"
+        android:layout_height="65dp"
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="@+id/mpfrFragmentListas"
@@ -35,13 +35,14 @@
         android:id="@+id/dspibBotonHome"
         android:layout_width="45dp"
         android:layout_height="40dp"
-        android:layout_marginStart="68dp"
+        android:layout_marginStart="40dp"
         android:layout_marginBottom="8dp"
         android:adjustViewBounds="true"
         android:background="@null"
         android:scaleType="centerCrop"
         android:src="@drawable/boton_home"
-        app:layout_constraintBottom_toBottomOf="@+id/dspivMenuHorizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/dspibBotonCalendario"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/dspivMenuHorizontal" />
 
@@ -62,8 +63,7 @@
         android:id="@+id/dspibBotonCalendario"
         android:layout_width="45dp"
         android:layout_height="40dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginStart="16dp"
         android:adjustViewBounds="true"
         android:background="@null"
         android:scaleType="centerCrop"
@@ -90,14 +90,16 @@
         android:id="@+id/dspibBotonBuscar"
         android:layout_width="45dp"
         android:layout_height="40dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginStart="16dp"
         android:adjustViewBounds="true"
         android:background="@null"
         android:scaleType="centerCrop"
         android:src="@drawable/boton_buscar"
         app:layout_constraintBottom_toBottomOf="@+id/dspibBotonPerfil"
         app:layout_constraintEnd_toStartOf="@+id/dspibBotonPerfil"
-        app:layout_constraintTop_toTopOf="@+id/dspibBotonPerfil" />
+        app:layout_constraintStart_toEndOf="@+id/dspibBotonCalendario"
+        app:layout_constraintTop_toTopOf="@+id/dspibBotonPerfil"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/dsptvBuscar"
@@ -116,14 +118,15 @@
         android:id="@+id/dspibBotonPerfil"
         android:layout_width="45dp"
         android:layout_height="40dp"
-        android:layout_marginEnd="68dp"
+        android:layout_marginEnd="40dp"
         android:layout_marginBottom="8dp"
         android:adjustViewBounds="true"
         android:background="@null"
         android:scaleType="centerCrop"
         android:src="@drawable/foto_perfil"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/dspivMenuHorizontal"
+        app:layout_constraintStart_toEndOf="@+id/dspibBotonBuscar"
         app:layout_constraintTop_toTopOf="@+id/dspivMenuHorizontal" />
 
     <TextView
@@ -138,16 +141,17 @@
         app:layout_constraintEnd_toEndOf="@+id/dspibBotonPerfil"
         app:layout_constraintStart_toStartOf="@+id/dspibBotonPerfil"
         app:layout_constraintTop_toBottomOf="@+id/dspibBotonPerfil" />
+
     <TextView
         android:id="@+id/dsptvTuPlan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
         android:fontFamily="@font/montserrat"
         android:text="Tu plan diario"
         android:textColor="#FBFBFB"
         android:textSize="24sp"
         android:typeface="normal"
+        app:layout_constraintBottom_toBottomOf="@+id/dspivMenuHorizontalSuperior"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/dspivMenuHorizontalSuperior"
         app:layout_constraintTop_toTopOf="@+id/dspivMenuHorizontalSuperior" />
@@ -156,7 +160,7 @@
         android:id="@+id/mpfrFragmentListas"
         android:name="proyecto.smarteat.home.comidas.ComidasFragment"
         android:layout_width="0dp"
-        android:layout_height="538dp"
+        android:layout_height="570dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/dspivMenuHorizontal"
         app:layout_constraintTop_toBottomOf="@+id/dspivMenuHorizontalSuperior" />

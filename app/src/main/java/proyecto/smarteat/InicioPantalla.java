@@ -1,4 +1,4 @@
-package proyecto.smarteat.auth;
+package proyecto.smarteat;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,7 +7,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.ImageButton;
 
-import proyecto.smarteat.R;
 import proyecto.smarteat.auth.login.LoginPantalla;
 import proyecto.smarteat.auth.register.RegistroPantalla;
 import proyecto.smarteat.home.MenuPantalla;

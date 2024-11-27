@@ -23,11 +23,6 @@
             android:name=".perfil.ActividadPerfil"
             android:exported="false" />
         <activity
-            android:name=".SplashActivity"
-            android:exported="true"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        </activity>
-        <activity
             android:name=".home.MenuPantalla"
             android:exported="true">
         </activity>
@@ -40,7 +35,7 @@
             android:exported="true">
         </activity>
         <activity
-            android:name=".auth.InicioPantalla"
+            android:name=".InicioPantalla"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

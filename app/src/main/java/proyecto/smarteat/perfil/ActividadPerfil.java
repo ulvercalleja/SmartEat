@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import proyecto.smarteat.R;
-import proyecto.smarteat.auth.InicioPantalla;
+import proyecto.smarteat.InicioPantalla;
 import proyecto.smarteat.auth.login.LoginPantalla;
 
 public class ActividadPerfil extends AppCompatActivity {
