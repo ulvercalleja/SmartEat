@@ -1,7 +1,5 @@
 package proyecto.smarteat.perfil;
 
-
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 
@@ -11,16 +9,17 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Base64;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import java.io.ByteArrayOutputStream;
 
+import proyecto.smarteat.ConstantUtils;
 import proyecto.smarteat.R;
 import proyecto.smarteat.InicioPantalla;
 import proyecto.smarteat.auth.login.LoginPantalla;
@@ -32,6 +31,7 @@ public class ActividadPerfil extends AppCompatActivity {
     Button btCerrarSesion, btEditarPerfil;
     EditText etNombreUsuario, etEmailUsuario,etContrasena,etNuevaContrasena;
     ImageView ivCambiarFoto, ivFotoPerfil, ivVolver;
+    TextView tvError;
     PerfilViewModel perfilViewModel;
     int userId;
     String contrasenaOriginal, nombreUsuarioOriginal, emailOriginal;
@@ -48,9 +48,11 @@ public class ActividadPerfil extends AppCompatActivity {
         etEmailUsuario = findViewById(R.id.fpetEmail);
         etContrasena = findViewById(R.id.fpetContrasena);
         etNuevaContrasena = findViewById(R.id.fpetContrasenaNueva);
+        tvError = findViewById(R.id.fptvError);
         ivCambiarFoto = findViewById(R.id.fpivCambiarFotoPerfil);
         ivFotoPerfil = findViewById(R.id.fpivFotoPerfil);
         ivVolver = findViewById(R.id.fpivVolver);
+
         // Obtener userId del Intent
         Intent intent = getIntent();
         if (intent != null && intent.hasExtra(LoginPantalla.ID_USUARIO)) {
@@ -73,11 +75,11 @@ public class ActividadPerfil extends AppCompatActivity {
 
         perfilViewModel.getSuccessMessage().observe(this, success -> {
             if (success != null && success) {
-                new AlertDialog.Builder(this)
-                        .setTitle("Éxito")
-                        .setMessage("El cambio se ha efectuado correctamente")
-                        .setPositiveButton("Aceptar", (dialog, which) -> dialog.dismiss())
-                        .show();
+                ConstantUtils.customSnackBarExito(
+                        this,
+                        findViewById(android.R.id.content),
+                        R.layout.csb_operacion_exitosa // El layout que quieres usar
+                );
 
                 perfilViewModel.resetSuccessMessage();
             }
@@ -105,13 +107,13 @@ public class ActividadPerfil extends AppCompatActivity {
                 // Guardar cambios
                 isEditing = false;
                 btEditarPerfil.setText("Editar Perfil");
-
+                tvError.setText("");
                 String nombreUsuario = etNombreUsuario.getText().toString();
                 String email = etEmailUsuario.getText().toString();
                 String contrasenaActual = etContrasena.getText().toString();
                 String nuevaContrasena = etNuevaContrasena.getText().toString();
                 String imagenBase64 = convertirImagenAStringBase64(ivFotoPerfil);
-                Log.d("DEBUG", "Imagen en Base64: " + imagenBase64);
+
                 etNombreUsuario.setEnabled(false);
                 etEmailUsuario.setEnabled(false);
                 etContrasena.setEnabled(false);
@@ -128,31 +130,27 @@ public class ActividadPerfil extends AppCompatActivity {
                     } else {
                         // Si hay cambios, validar contraseña si se requiere
                         if (TextUtils.isEmpty(contrasenaActual) || !contrasenaOriginal.equals(contrasenaActual)) {
-                            new AlertDialog.Builder(this)
-                                    .setTitle("Error")
-                                    .setMessage("La contraseña actual es incorrecta.")
-                                    .setPositiveButton("Aceptar", (dialog, which) -> dialog.dismiss())
-                                    .show();
+                            tvError.setText("La contraseña actual es incorrecta.");
                         } else {
                             // Si la contraseña es válida y hay una nueva contraseña
                             if (!TextUtils.isEmpty(nuevaContrasena)) {
+                                tvError.setText("");
                                 PojoUsuario usuario = new PojoUsuario(userId, nombreUsuario, imagenBase64, email, nuevaContrasena);
                                 perfilViewModel.editarPerfil(usuario);
+
                             } else {
+                                tvError.setText("");
                                 PojoUsuario usuario = new PojoUsuario(userId, nombreUsuario, imagenBase64, email, contrasenaOriginal);
                                 perfilViewModel.editarPerfil(usuario);
                             }
                         }
                     }
                 } else {
-                    new AlertDialog.Builder(this)
-                            .setTitle("Error")
-                            .setMessage("Los campos no pueden estar vacíos.")
-                            .setPositiveButton("Aceptar", (dialog, which) -> dialog.dismiss())
-                            .show();
+                    tvError.setText("Los campos no pueden estar vacíos.");
                 }
                     etEmailUsuario.setText(nombreUsuario);
                     etEmailUsuario.setText(email);
+
             }
 
         });

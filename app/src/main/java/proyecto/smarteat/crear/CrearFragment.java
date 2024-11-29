@@ -23,6 +23,7 @@ import android.view.ViewGroup;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
+import proyecto.smarteat.ConstantUtils;
 import proyecto.smarteat.home.MenuPantalla;
 import proyecto.smarteat.R;
 import proyecto.smarteat.home.comidas.seleccion.ApiAlimentos;
@@ -137,9 +138,17 @@ public class CrearFragment extends Fragment {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {
-                    Log.d("API respuesta", "Comida guardada correctamente");
+                    ConstantUtils.customSnackBarExito(
+                            getActivity(),
+                            getView(),
+                            R.layout.csb_operacion_exitosa // El layout que quieres usar
+                    );
                 } else {
-                    Log.e("API respuesta", "Error en la respuesta de la API: " + response.code());
+                    ConstantUtils.customSnackBarError(
+                            getActivity(),
+                            getView(),
+                            R.layout.csb_operacion_error // El layout que quieres usar
+                    );
                 }
             }
 

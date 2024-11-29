@@ -1,10 +1,11 @@
 package proyecto.smarteat.home.comidas.seleccion;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,12 +16,14 @@ import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
+import com.google.android.material.snackbar.Snackbar;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import proyecto.smarteat.ConstantUtils;
 import proyecto.smarteat.R;
 import proyecto.smarteat.home.MenuPantalla;
 import retrofit2.Call;
@@ -98,15 +101,27 @@ public class SeleccionComidasAdapter extends RecyclerView.Adapter<SeleccionComid
                 @Override
                 public void onResponse(Call<Void> call, Response<Void> response) {
                     if (response.isSuccessful()) {
-                        Log.d("API respuesta", "Comida guardada correctamente");
+                        ConstantUtils.customSnackBarExito(
+                                context,
+                                holder.itemView,
+                                R.layout.csb_operacion_exitosa // El layout que quieres usar
+                        );
                     } else {
-                        Log.e("API respuesta", "Error en la respuesta de la API: " + response.code());
+                        ConstantUtils.customSnackBarError(
+                                context,
+                                holder.itemView,
+                                R.layout.csb_operacion_error // El layout que quieres usar
+                        );
                     }
                 }
 
                 @Override
                 public void onFailure(Call<Void> call, Throwable t) {
-                    Log.e("API respuesta", "Error al realizar la solicitud a la API", t);
+                    ConstantUtils.customSnackBarError(
+                            context,
+                            holder.itemView,
+                            R.layout.csb_operacion_error // El layout que quieres usar
+                    );
                 }
             });
         });
@@ -191,4 +206,5 @@ public class SeleccionComidasAdapter extends RecyclerView.Adapter<SeleccionComid
         }
 
     }
+
 }

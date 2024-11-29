@@ -95,42 +95,42 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fpetEmail" />
 
-<ImageView
-    android:id="@+id/fpivFotoPerfil"
-    android:layout_width="150dp"
-    android:layout_height="150dp"
-    android:layout_marginTop="80dp"
-    android:adjustViewBounds="false"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:srcCompat="@drawable/foto_perfil" />
+    <ImageView
+        android:id="@+id/fpivFotoPerfil"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="80dp"
+        android:adjustViewBounds="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/foto_perfil" />
 
-<Button
-    android:id="@+id/fpbtEditarPerfil"
-    android:layout_width="194dp"
-    android:layout_height="61dp"
-    android:layout_marginTop="185dp"
-    android:backgroundTint="#EF5B2D"
-    android:fontFamily="@font/roboto_light"
-    android:text="Editar perfil"
-    android:textSize="24sp"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/fpetEmail" />
+    <Button
+        android:id="@+id/fpbtEditarPerfil"
+        android:layout_width="194dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="185dp"
+        android:backgroundTint="#EF5B2D"
+        android:fontFamily="@font/roboto_light"
+        android:text="Editar perfil"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fpetEmail" />
 
-<Button
-    android:id="@+id/fpbtCerrarSesion"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:backgroundTint="#DDDDDD"
-    android:text="CERRAR SESIÓN"
-    android:textColor="#020202"
-    android:textStyle="bold"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="@+id/fpbtEditarPerfil"
-    app:layout_constraintStart_toStartOf="@+id/fpbtEditarPerfil"
-    app:layout_constraintTop_toBottomOf="@+id/fpbtEditarPerfil" />
+    <Button
+        android:id="@+id/fpbtCerrarSesion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#DDDDDD"
+        android:text="CERRAR SESIÓN"
+        android:textColor="#020202"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/fpbtEditarPerfil"
+        app:layout_constraintStart_toStartOf="@+id/fpbtEditarPerfil"
+        app:layout_constraintTop_toBottomOf="@+id/fpbtEditarPerfil" />
 
     <ImageView
         android:id="@+id/fpivCambiarFotoPerfil"
@@ -140,4 +140,17 @@
         app:layout_constraintBottom_toBottomOf="@+id/fpivFotoPerfil"
         app:layout_constraintEnd_toEndOf="@+id/fpivFotoPerfil"
         app:srcCompat="@drawable/boton_foto_perfil" />
+
+    <TextView
+        android:id="@+id/fptvError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textColor="#E91E1E"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/fpbtEditarPerfil"
+        app:layout_constraintEnd_toEndOf="@+id/fpbtEditarPerfil"
+        app:layout_constraintStart_toStartOf="@+id/fpbtEditarPerfil"
+        app:layout_constraintTop_toBottomOf="@+id/fpetEmail" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
