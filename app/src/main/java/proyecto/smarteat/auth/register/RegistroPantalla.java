@@ -1,4 +1,5 @@
 package proyecto.smarteat.auth.register;
+import proyecto.smarteat.ConstantUtils;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -52,20 +53,20 @@ public class RegistroPantalla extends AppCompatActivity {
 
     private Boolean checkErrors(String nombre, String pass, String passRep, String email) {
         if (nombre.isEmpty() || pass.isEmpty() || passRep.isEmpty() || email.isEmpty()) {
-            tvError.setText("Todos los campos son requeridos");
+            tvError.setText(ConstantUtils.REGISTER_MSG_CAMPOS_REQUERIDOS);
             tvError.setTextColor(Color.RED);
             return false;
         }
 
         if (!pass.equals(passRep)) {
-            tvError.setText("Las contraseñas no coinciden");
+            tvError.setText(ConstantUtils.REGISTER_MSG_CONTRASENAS_NO_COINCIDEN);
             tvError.setTextColor(Color.RED);
             return false;
         }
 
-        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+        String emailPattern = ConstantUtils.REGISTER_EMAIL_PATTERN;
         if (!email.matches(emailPattern)) {
-            tvError.setText("Correo electrónico inválido");
+            tvError.setText(ConstantUtils.REGISTER_MSG_EMAIL_INVALIDO);
             tvError.setTextColor(Color.RED);
             return false;
         }
@@ -88,14 +89,14 @@ public class RegistroPantalla extends AppCompatActivity {
         inicioViewModel.getSuccessMessage().observe(this, success -> {
             if (success != null) {
                 if (success) {
-                    tvError.setText("Usuario creado exitosamente");
+                    tvError.setText(ConstantUtils.REGISTER_MSG_USUARIO_CREADO);
                     tvError.setTextColor(Color.GREEN);
                     limpiarCampos();
                     Intent i = new Intent(this, LoginPantalla.class);
                     startActivity(i);
                     finish();
                 } else {
-                    tvError.setText("Error al crear el usuario. Inténtelo de nuevo.");
+                    tvError.setText(ConstantUtils.REGISTER_MSG_ERROR_CREAR_USUARIO);
                     tvError.setTextColor(Color.RED);
                 }
                 // Restablecer el estado para evitar múltiples mensajes

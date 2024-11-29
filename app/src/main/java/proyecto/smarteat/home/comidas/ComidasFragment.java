@@ -17,7 +17,6 @@ import java.util.List;
 import proyecto.smarteat.R;
 
 public class ComidasFragment extends Fragment {
-    private final String NOMBRE_DIA_INFO = "nombreDia";
     private RecyclerView recyclerViewComidas;
     private ComidasAdapter comidaAdapter;
     private List<Comidas> comidasLista = Arrays.asList(

@@ -24,11 +24,8 @@ import java.io.ByteArrayOutputStream;
 import proyecto.smarteat.ConstantUtils;
 import proyecto.smarteat.R;
 import proyecto.smarteat.InicioPantalla;
-import proyecto.smarteat.auth.login.LoginPantalla;
 
 public class ActividadPerfil extends AppCompatActivity {
-    private static final String SHARED_PREFS = "user_session";
-    private static final int PICK_IMAGE_REQUEST = 1;
 
     Button btCerrarSesion, btEditarPerfil;
     EditText etNombreUsuario, etEmailUsuario,etContrasena,etNuevaContrasena;
@@ -57,8 +54,8 @@ public class ActividadPerfil extends AppCompatActivity {
 
         // Obtener userId del Intent
         Intent intent = getIntent();
-        if (intent != null && intent.hasExtra(LoginPantalla.ID_USUARIO)) {
-            userId = intent.getIntExtra(LoginPantalla.ID_USUARIO, -1);
+        if (intent != null && intent.hasExtra(ConstantUtils.LOGIN_ID_USUARIO)) {
+            userId = intent.getIntExtra(ConstantUtils.LOGIN_ID_USUARIO, -1);
         }
 
         perfilViewModel = new ViewModelProvider(this).get(PerfilViewModel.class);
@@ -95,7 +92,7 @@ public class ActividadPerfil extends AppCompatActivity {
             if (!isEditing) {
                 // Activar modo edición
                 isEditing = true;
-                btEditarPerfil.setText("Guardar");
+                btEditarPerfil.setText(ConstantUtils.PERFIL_BT_EDITAR_TEXT_GUARDAR);
 
                 // Mostrar EditText y ocultar TextView
 
@@ -108,7 +105,7 @@ public class ActividadPerfil extends AppCompatActivity {
             } else {
                 // Guardar cambios
                 isEditing = false;
-                btEditarPerfil.setText("Editar Perfil");
+                btEditarPerfil.setText(ConstantUtils.PERFIL_BT_EDITAR_TEXT_EDITAR);
                 tvError.setText("");
                 String nombreUsuario = etNombreUsuario.getText().toString();
                 String email = etEmailUsuario.getText().toString();
@@ -132,7 +129,7 @@ public class ActividadPerfil extends AppCompatActivity {
                     } else {
                         // Validar contraseña actual
                         if (TextUtils.isEmpty(contrasenaActual) || !BCrypt.checkpw(contrasenaActual, contrasenaOriginal)) {
-                            tvError.setText("La contraseña actual es incorrecta.");
+                            tvError.setText(ConstantUtils.PERFIL_MSG_ERROR_CONTRASENA_INCORRECTA);
                         } else {
                             // Actualizar con nueva contraseña si es válida
                             String nuevaContrasenaHashed = !TextUtils.isEmpty(nuevaContrasena)
@@ -145,7 +142,7 @@ public class ActividadPerfil extends AppCompatActivity {
                         }
                     }
                 } else {
-                    tvError.setText("Los campos no pueden estar vacíos.");
+                    tvError.setText(ConstantUtils.PERFIL_MSG_ERROR_CAMPOS_VACIOS);
                 }
                     etEmailUsuario.setText(nombreUsuario);
                     etEmailUsuario.setText(email);
@@ -161,14 +158,14 @@ public class ActividadPerfil extends AppCompatActivity {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Seleccion una imagen"), PICK_IMAGE_REQUEST);
+        startActivityForResult(Intent.createChooser(intent, ConstantUtils.PERFIL_TITLE_GALERIA), ConstantUtils.CREAR_PICK_IMAGE_REQUEST);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+        if (requestCode == ConstantUtils.CREAR_PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             // Obtener la URI de la imagen seleccionada
             try {
                 // Convertir la URI a un Bitmap
@@ -184,7 +181,7 @@ public class ActividadPerfil extends AppCompatActivity {
     }
 
     private void logout() {
-        SharedPreferences.Editor editor = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE).edit();
+        SharedPreferences.Editor editor = getSharedPreferences(ConstantUtils.LOGIN_SHARED_PREFS, MODE_PRIVATE).edit();
         editor.clear(); // Eliminar todos los datos guardados
         editor.apply();
 

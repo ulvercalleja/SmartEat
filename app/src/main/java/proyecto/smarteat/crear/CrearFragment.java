@@ -35,7 +35,6 @@ import retrofit2.Response;
 
 public class CrearFragment extends Fragment {
 
-    private static final int PICK_IMAGE_REQUEST = 1;  // Solicitud para abrir la galería
     private EditText etNombreComida, etCalorias, etGrasas, etHidratos, etProteinas;
     private ImageView ivFotoComida, ivCambiarFoto, ivGuardar;
     private int idUsuario;
@@ -83,31 +82,31 @@ public class CrearFragment extends Fragment {
 
     private boolean validarCampos() {
         if (TextUtils.isEmpty(etNombreComida.getText().toString().trim())) {
-            etNombreComida.setError("Este campo es obligatorio");
+            etNombreComida.setError(ConstantUtils.CREAR_MSG_ERROR_CAMPO_OBLIGATORIO);
             etNombreComida.requestFocus();
             return false;
         }
 
         if (TextUtils.isEmpty(etCalorias.getText().toString().trim())) {
-            etCalorias.setError("Este campo es obligatorio");
+            etCalorias.setError(ConstantUtils.CREAR_MSG_ERROR_CAMPO_OBLIGATORIO);
             etCalorias.requestFocus();
             return false;
         }
 
         if (TextUtils.isEmpty(etGrasas.getText().toString().trim())) {
-            etGrasas.setError("Este campo es obligatorio");
+            etGrasas.setError(ConstantUtils.CREAR_MSG_ERROR_CAMPO_OBLIGATORIO);
             etGrasas.requestFocus();
             return false;
         }
 
         if (TextUtils.isEmpty(etHidratos.getText().toString().trim())) {
-            etHidratos.setError("Este campo es obligatorio");
+            etHidratos.setError(ConstantUtils.CREAR_MSG_ERROR_CAMPO_OBLIGATORIO);
             etHidratos.requestFocus();
             return false;
         }
 
         if (TextUtils.isEmpty(etProteinas.getText().toString().trim())) {
-            etProteinas.setError("Este campo es obligatorio");
+            etProteinas.setError(ConstantUtils.CREAR_MSG_ERROR_CAMPO_OBLIGATORIO);
             etProteinas.requestFocus();
             return false;
         }
@@ -154,7 +153,7 @@ public class CrearFragment extends Fragment {
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                Log.e("API respuesta", "Error al realizar la solicitud a la API", t);
+                Log.e(ConstantUtils.CREAR_TAG_RESPUESTA_API, ConstantUtils.CREAR_TAG_ERROR_API, t);
             }
         });
     }
@@ -163,14 +162,15 @@ public class CrearFragment extends Fragment {
     private void abrirGaleria() {
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         intent.setType("image/*");
-        startActivityForResult(intent, PICK_IMAGE_REQUEST);
+        startActivityForResult(intent, ConstantUtils.CREAR_PICK_IMAGE_REQUEST);
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == getActivity().RESULT_OK && data != null && data.getData() != null) {
+        if (requestCode == ConstantUtils.CREAR_PICK_IMAGE_REQUEST && resultCode ==
+                getActivity().RESULT_OK && data != null && data.getData() != null) {
             // Obtener la URI de la imagen seleccionada
             Uri imageUri = data.getData();
 
@@ -182,7 +182,7 @@ public class CrearFragment extends Fragment {
                 ivFotoComida.setImageBitmap(bitmap);
             } catch (IOException e) {
                 e.printStackTrace();
-                Log.e("Galería", "Error al cargar la imagen desde la galería", e);
+                Log.e(ConstantUtils.CREAR_TAG_RESPUESTA_GALERIA, ConstantUtils.CREAR_LOG_ERROR_GALERIA, e);
             }
         }
     }

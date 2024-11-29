@@ -65,7 +65,6 @@ public class SeleccionComidasAdapter extends RecyclerView.Adapter<SeleccionComid
         } else {
             idUsuario = -1;
         }
-        System.out.println("User ID obtenido: " + idUsuario);
 
         // Mostrar el nombre
         holder.nombreComida.setText(alimento.getNombre());
@@ -85,9 +84,9 @@ public class SeleccionComidasAdapter extends RecyclerView.Adapter<SeleccionComid
         }
 
         // Actualizar los gráficos de donut con los valores de los macronutrientes
-        updateDonutChart(holder.pieChartGrasas, "Grasas", alimento.getGrasas());
-        updateDonutChart(holder.pieChartProteinas, "Proteínas", alimento.getProteinas());
-        updateDonutChart(holder.pieChartHidratos, "Hidratos", alimento.getHidratos());
+        updateDonutChart(holder.pieChartGrasas, ConstantUtils.SELECCION_COMIDAS_LABEL_GRASAS, alimento.getGrasas());
+        updateDonutChart(holder.pieChartProteinas, ConstantUtils.SELECCION_COMIDAS_LABEL_HIDRATOS, alimento.getProteinas());
+        updateDonutChart(holder.pieChartHidratos, ConstantUtils.SELECCION_COMIDAS_LABEL_PROTEINAS, alimento.getHidratos());
 
         // Configurar clic en el elemento
         holder.itemView.setOnClickListener(v -> {

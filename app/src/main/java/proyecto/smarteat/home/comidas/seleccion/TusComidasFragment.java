@@ -18,7 +18,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.github.mikephil.charting.components.Legend;  // Importación de la clase Legend
+import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
@@ -27,6 +27,7 @@ import com.github.mikephil.charting.data.PieEntry;
 import java.util.ArrayList;
 import java.util.List;
 
+import proyecto.smarteat.ConstantUtils;
 import proyecto.smarteat.R;
 import proyecto.smarteat.home.MenuPantalla;
 import retrofit2.Call;
@@ -34,7 +35,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class TusComidasFragment extends Fragment {
-    public static final String ARG_USER_ID = "userId";
     private int userId;
 
     private Button btAñadir;
@@ -64,11 +64,8 @@ public class TusComidasFragment extends Fragment {
             MenuPantalla menuPantalla = (MenuPantalla) getActivity();
             userId = menuPantalla.getUserId(); // Llama al método getUserId()
 
-            // Ahora userId contiene el ID del usuario obtenido desde MenuPantalla
-            // Puedes mostrarlo en un Toast si deseas
-            System.out.println("User ID: " + userId);
         } else {
-            Log.e("TusComidasFragment", "La actividad host no es MenuPantalla");
+            Log.e(ConstantUtils.TUS_COMIDAS_TAG, ConstantUtils.TUS_COMIDAS_TAG_ERROR);
         }
 
         noHayComida = view.findViewById(R.id.ftctvNoHayComida);
@@ -147,13 +144,14 @@ public class TusComidasFragment extends Fragment {
                     configurarPieChart(totalGrasas, totalHidratos, totalProteinas);
 
                 } else {
-                    Log.e("API Error", "Error en la respuesta de la API: " + response.code());
+                    Log.e(ConstantUtils.TUS_COMIDAS_TAG_RESPUESTA_API,
+                            ConstantUtils.TUS_COMIDAS_TAG_ERROR_API + response.code());
                 }
             }
 
             @Override
             public void onFailure(Call<List<PojoTusComidas>> call, Throwable t) {
-                Log.e("API Failure", "Error al realizar la solicitud a la API", t);
+                Log.e(ConstantUtils.TUS_COMIDAS_TAG_RESPUESTA_API, ConstantUtils.TUS_COMIDAS_TAG_ERROR_API, t);
             }
         });
     }
@@ -162,9 +160,9 @@ public class TusComidasFragment extends Fragment {
         PieChart pieChart = getView().findViewById(R.id.tcfpcTotalNutrientes);
         // Crear entradas para el gráfico
         List<PieEntry> entries = new ArrayList<>();
-        entries.add(new PieEntry(grasas, "Grasas"));
-        entries.add(new PieEntry(hidratos, "Hidratos"));
-        entries.add(new PieEntry(proteinas, "Proteínas"));
+        entries.add(new PieEntry(grasas, ConstantUtils.TUS_COMIDAS_LABEL_GRASAS));
+        entries.add(new PieEntry(hidratos, ConstantUtils.TUS_COMIDAS_LABEL_HIDRATOS));
+        entries.add(new PieEntry(proteinas, ConstantUtils.TUS_COMIDAS_LABEL_PROTEINAS));
 
         // Crear los colores
         List<Integer> colors = new ArrayList<>();
@@ -176,7 +174,7 @@ public class TusComidasFragment extends Fragment {
         PieDataSet dataSet = new PieDataSet(entries, "");
         dataSet.setColors(colors);
         dataSet.setValueTextSize(12f);
-        dataSet.setValueTextColor(Color.WHITE);
+        dataSet.setValueTextColor(ConstantUtils.TUS_COMIDAS_PIECHART_TEXT_COLOR);
         // Configurar los datos
         PieData data = new PieData(dataSet);
         pieChart.setData(data);
@@ -186,9 +184,9 @@ public class TusComidasFragment extends Fragment {
         pieChart.getDescription().setEnabled(false);
         pieChart.setDrawHoleEnabled(true);
         pieChart.setHoleColor(Color.WHITE);
-        pieChart.setTransparentCircleRadius(58f);
-        pieChart.setCenterText("Nutrientes Totales");
-        pieChart.setCenterTextSize(14f);
+        pieChart.setTransparentCircleRadius(ConstantUtils.TUS_COMIDAS_PIECHART_TRANSPARENT_CIRCLE_RADIUS);
+        pieChart.setCenterText(ConstantUtils.TUS_COMIDAS_PIECHART_CENTER_TEXT);
+        pieChart.setCenterTextSize(ConstantUtils.TUS_COMIDAS_PIECHART_CENTER_TEXT_SIZE);
         pieChart.setUsePercentValues(false);
         pieChart.setDrawEntryLabels(false);
         pieChart.getDescription().setEnabled(false);
@@ -198,7 +196,7 @@ public class TusComidasFragment extends Fragment {
         legend.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);    // Coloca en la parte inferior
         legend.setOrientation(Legend.LegendOrientation.HORIZONTAL);            // Leyenda en fila horizontal
         legend.setDrawInside(false);                                                // Tamaño del texto
-        legend.setTextColor(Color.BLACK);
+        legend.setTextColor(ConstantUtils.TUS_COMIDAS_LEGEND_TEXT_COLOR);
 
         // Actualizar el gráfico
         pieChart.invalidate();

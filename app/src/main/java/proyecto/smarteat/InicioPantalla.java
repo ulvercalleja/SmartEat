@@ -14,10 +14,7 @@ import proyecto.smarteat.home.MenuPantalla;
 public class InicioPantalla extends AppCompatActivity {
 
     ImageButton btRegistroCorreo, btInicioSesion;
-    // Agregar estas constantes
-    private static final String SHARED_PREFS = "user_session";
-    private static final String KEY_USER_ID = "user_id";
-    public static final String ID_USUARIO = "id del usuario" ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,19 +46,19 @@ public class InicioPantalla extends AppCompatActivity {
     // Comprueba si el usuario está logueado.
 
     private boolean isUserLoggedIn() {
-        SharedPreferences prefs = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-        return prefs.contains(KEY_USER_ID); // Devuelve true si el usuario tiene un ID guardado
+        SharedPreferences prefs = getSharedPreferences(ConstantUtils.LOGIN_SHARED_PREFS, MODE_PRIVATE);
+        return prefs.contains(ConstantUtils.LOGIN_KEY_USER_ID); // Devuelve true si el usuario tiene un ID guardado
     }
 
 
      // Redirige al usuario a la pantalla principal.
 
     private void redirectToMenu() {
-        SharedPreferences prefs = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-        int userId = prefs.getInt(KEY_USER_ID, -1);
+        SharedPreferences prefs = getSharedPreferences(ConstantUtils.LOGIN_SHARED_PREFS, MODE_PRIVATE);
+        int userId = prefs.getInt(ConstantUtils.LOGIN_KEY_USER_ID, -1);
 
         Intent intent = new Intent(this, MenuPantalla.class);
-        intent.putExtra(ID_USUARIO, userId); // Pasa el ID del usuario a MenuPantalla
+        intent.putExtra(ConstantUtils.LOGIN_ID_USUARIO, userId); // Pasa el ID del usuario a MenuPantalla
         startActivity(intent);
         finish(); // Finaliza la actividad actual para evitar volver aquí
     }

@@ -1,4 +1,5 @@
 package proyecto.smarteat.auth;
+import proyecto.smarteat.ConstantUtils;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -7,11 +8,10 @@ public class AuthApi {
 
     private static AuthApi instancia;
     private static AuthRepo repo;
-    private static final String BASE_URL = "http://192.168.0.14:8080/";
 
     private AuthApi() {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
+                .baseUrl(ConstantUtils.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 

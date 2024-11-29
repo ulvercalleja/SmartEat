@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.widget.ImageButton;
 import android.content.Intent;
 
+import proyecto.smarteat.ConstantUtils;
 import proyecto.smarteat.R;
 import proyecto.smarteat.crear.CrearFragment;
 import proyecto.smarteat.calendario.CalendarioFragment;
@@ -31,11 +32,9 @@ public class MenuPantalla extends AppCompatActivity {
         btPerfil = findViewById(R.id.dspibBotonPerfil);
 
         Intent intent = getIntent();
-        if (intent != null && intent.hasExtra(LoginPantalla.ID_USUARIO)) {
-            userId = intent.getIntExtra(LoginPantalla.ID_USUARIO, -1);
+        if (intent != null && intent.hasExtra(ConstantUtils.LOGIN_ID_USUARIO)) {
+            userId = intent.getIntExtra(ConstantUtils.LOGIN_ID_USUARIO, -1);
         }
-
-        System.out.println("ID USUARIO" + userId);
 
         btHome.setOnClickListener(v -> {
             cargarFragmentoDiasSemana();
@@ -90,7 +89,7 @@ public class MenuPantalla extends AppCompatActivity {
 
     private void cargarActividadPerfil() {
         Intent intent = new Intent(this, ActividadPerfil.class);
-        intent.putExtra(LoginPantalla.ID_USUARIO, userId); // Pasar el ID del usuario
+        intent.putExtra(ConstantUtils.LOGIN_ID_USUARIO, userId); // Pasar el ID del usuario
         startActivity(intent);
     }
 

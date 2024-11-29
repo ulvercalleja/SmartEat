@@ -1,5 +1,6 @@
 package proyecto.smarteat.perfil;
 
+import proyecto.smarteat.ConstantUtils;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -7,11 +8,10 @@ public class ApiPerfil {
 
     private static ApiPerfil instancia;
     private static RepoPerfil repo;
-    private static final String BASE_URL = "http://192.168.0.14:8080/";
 
     private ApiPerfil() {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
+                .baseUrl(ConstantUtils.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
