@@ -2,6 +2,7 @@ package proyecto.smarteat.auth.register;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
+import org.mindrot.jbcrypt.BCrypt;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -74,9 +75,11 @@ public class RegistroPantalla extends AppCompatActivity {
     }
 
     private void registerUser(String nombre, String email, String password) {
-
+        // Cifrar la contraseña antes de crear el objeto PojoUsuario
+        String passwordHash = hashPassword(password);
+        System.out.println(passwordHash);
         // Crear el objeto PojoUsuario
-        nuevoUsuario = new PojoUsuario(nombre, email, password);
+        nuevoUsuario = new PojoUsuario(nombre, email, passwordHash);
 
         // Llamar al ViewModel para crear el usuario
         inicioViewModel.crearUsuario(nuevoUsuario);
@@ -88,11 +91,6 @@ public class RegistroPantalla extends AppCompatActivity {
                     tvError.setText("Usuario creado exitosamente");
                     tvError.setTextColor(Color.GREEN);
                     limpiarCampos();
-                    try {
-                        Thread.sleep(3000);
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
                     Intent i = new Intent(this, LoginPantalla.class);
                     startActivity(i);
                     finish();
@@ -111,6 +109,10 @@ public class RegistroPantalla extends AppCompatActivity {
         etPass.setText("");
         etPassRep.setText("");
         etEmail.setText("");
+    }
+
+    private String hashPassword(String password) {
+        return BCrypt.hashpw(password, BCrypt.gensalt(12)); // "12" es el factor de trabajo de la sal
     }
 
 }

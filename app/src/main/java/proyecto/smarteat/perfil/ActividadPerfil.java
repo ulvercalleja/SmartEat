@@ -17,6 +17,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 import java.io.ByteArrayOutputStream;
 
 import proyecto.smarteat.ConstantUtils;
@@ -122,27 +124,24 @@ public class ActividadPerfil extends AppCompatActivity {
                 etNuevaContrasena.setVisibility(EditText.GONE);
 
                 // Validar campos
+                // Validar campos
                 if (!TextUtils.isEmpty(nombreUsuario) && !TextUtils.isEmpty(email)) {
-
                     if (nombreUsuario.equals(nombreUsuarioOriginal) && email.equals(emailOriginal) && nuevaContrasena.isEmpty()) {
                         PojoUsuario usuario = new PojoUsuario(userId, nombreUsuario, imagenBase64, email, contrasenaOriginal);
                         perfilViewModel.editarPerfil(usuario);
                     } else {
-                        // Si hay cambios, validar contraseña si se requiere
-                        if (TextUtils.isEmpty(contrasenaActual) || !contrasenaOriginal.equals(contrasenaActual)) {
+                        // Validar contraseña actual
+                        if (TextUtils.isEmpty(contrasenaActual) || !BCrypt.checkpw(contrasenaActual, contrasenaOriginal)) {
                             tvError.setText("La contraseña actual es incorrecta.");
                         } else {
-                            // Si la contraseña es válida y hay una nueva contraseña
-                            if (!TextUtils.isEmpty(nuevaContrasena)) {
-                                tvError.setText("");
-                                PojoUsuario usuario = new PojoUsuario(userId, nombreUsuario, imagenBase64, email, nuevaContrasena);
-                                perfilViewModel.editarPerfil(usuario);
+                            // Actualizar con nueva contraseña si es válida
+                            String nuevaContrasenaHashed = !TextUtils.isEmpty(nuevaContrasena)
+                                    ? BCrypt.hashpw(nuevaContrasena, BCrypt.gensalt())
+                                    : contrasenaOriginal;
 
-                            } else {
-                                tvError.setText("");
-                                PojoUsuario usuario = new PojoUsuario(userId, nombreUsuario, imagenBase64, email, contrasenaOriginal);
-                                perfilViewModel.editarPerfil(usuario);
-                            }
+                            tvError.setText("");
+                            PojoUsuario usuario = new PojoUsuario(userId, nombreUsuario, imagenBase64, email, nuevaContrasenaHashed);
+                            perfilViewModel.editarPerfil(usuario);
                         }
                     }
                 } else {

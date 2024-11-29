@@ -15,7 +15,11 @@ import com.google.android.material.snackbar.Snackbar;
 
 public class ConstantUtils {
 
-
+    private static final String LOGIN_SHARED_PREFS = "user_session";
+    private static final String LOGIN_KEY_USER_ID = "user_id";
+    public static final String LOGIN_DATOS_INCORRECTOS="El correo o la contraseña son incorrectos";
+    private static final String LOGIN_ERROR_VACIO = "El campo está vacío:";
+    public static final String LOGIN_ID_USUARIO = "id del usuario" ;
 
     /*Los siguientes dos metodos se usan para obtener el SnackBar (resultado operacion) personalizado*/
     public static void customSnackBarExito (Context context, View parentView, int layoutResId){
