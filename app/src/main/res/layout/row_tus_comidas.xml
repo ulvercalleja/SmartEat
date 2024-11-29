@@ -29,6 +29,7 @@
             android:layout_marginTop="8dp"
             android:fontFamily="@font/roboto_medium"
             android:text="Pulpo a la gallega"
+            android:textAlignment="center"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@+id/rtcivImagenComida"
             app:layout_constraintStart_toStartOf="@+id/rtcivImagenComida"

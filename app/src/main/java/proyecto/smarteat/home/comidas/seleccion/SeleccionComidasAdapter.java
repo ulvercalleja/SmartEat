@@ -30,11 +30,18 @@ import retrofit2.Response;
 public class SeleccionComidasAdapter extends RecyclerView.Adapter<SeleccionComidasAdapter.ViewHolder> {
 
     private List<PojoAlimentos> listaComida;
+    private List<PojoAlimentos> listaComidaOriginal;
     private Context context;
 
     public SeleccionComidasAdapter(List<PojoAlimentos> listaComida, Context context) {
         this.listaComida = listaComida;
         this.context = context;
+        this.listaComidaOriginal = new ArrayList<>(listaComida);
+    }
+
+    public void restaurarListaOriginal() {
+        listaComida = new ArrayList<>(listaComidaOriginal);
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -109,6 +116,18 @@ public class SeleccionComidasAdapter extends RecyclerView.Adapter<SeleccionComid
     @Override
     public int getItemCount() { return listaComida.size(); }
 
+    public void filtrar(String texto) {
+        List<PojoAlimentos> listaFiltrada = new ArrayList<>();
+        for (PojoAlimentos alimento : listaComida) {
+            if (alimento.getNombre().toLowerCase().contains(texto.toLowerCase())) {
+                listaFiltrada.add(alimento);
+            }
+        }
+        // Actualizar la lista en el adaptador con la lista filtrada
+        listaComida = listaFiltrada;
+        notifyDataSetChanged();
+    }
+
     private void updateDonutChart(PieChart pieChart, String label, float value) {
         ArrayList<PieEntry> entries = new ArrayList<>();
         entries.add(new PieEntry(value, label));
@@ -170,5 +189,6 @@ public class SeleccionComidasAdapter extends RecyclerView.Adapter<SeleccionComid
             pieChart.setUsePercentValues(false); // Mostrar los valores en porcentajes
             pieChart.getLegend().setEnabled(false); // Desactiva la leyenda si no es necesaria
         }
+
     }
 }

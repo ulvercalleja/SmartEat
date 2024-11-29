@@ -68,7 +68,7 @@
         android:scaleType="centerCrop"
         android:src="@drawable/boton_calendario"
         app:layout_constraintBottom_toBottomOf="@+id/dspibBotonHome"
-        app:layout_constraintEnd_toStartOf="@+id/dspibBotonBuscar"
+        app:layout_constraintEnd_toStartOf="@+id/dspibBotonCrear"
         app:layout_constraintStart_toEndOf="@+id/dspibBotonHome"
         app:layout_constraintTop_toTopOf="@+id/dspibBotonHome" />
 
@@ -86,14 +86,15 @@
         app:layout_constraintTop_toBottomOf="@+id/dspibBotonCalendario" />
 
     <ImageButton
-        android:id="@+id/dspibBotonBuscar"
+        android:id="@+id/dspibBotonCrear"
         android:layout_width="45dp"
         android:layout_height="40dp"
         android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
         android:adjustViewBounds="true"
         android:background="@null"
         android:scaleType="centerCrop"
-        android:src="@drawable/boton_buscar"
+        android:src="@drawable/boton_comida"
         app:layout_constraintBottom_toBottomOf="@+id/dspibBotonPerfil"
         app:layout_constraintEnd_toStartOf="@+id/dspibBotonPerfil"
         app:layout_constraintStart_toEndOf="@+id/dspibBotonCalendario"
@@ -101,17 +102,17 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/dsptvBuscar"
+        android:id="@+id/dsptvCrear"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginTop="4dp"
         android:fontFamily="@font/montserrat"
-        android:text="Buscar"
+        android:text="Crear"
         android:textColor="#FDFDFD"
         android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="@+id/dspibBotonBuscar"
-        app:layout_constraintStart_toStartOf="@+id/dspibBotonBuscar"
-        app:layout_constraintTop_toBottomOf="@+id/dspibBotonBuscar" />
+        app:layout_constraintEnd_toEndOf="@+id/dspibBotonCrear"
+        app:layout_constraintStart_toStartOf="@+id/dspibBotonCrear"
+        app:layout_constraintTop_toBottomOf="@+id/dspibBotonCrear" />
 
     <ImageButton
         android:id="@+id/dspibBotonPerfil"
@@ -125,7 +126,7 @@
         android:src="@drawable/foto_perfil"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/dspivMenuHorizontal"
-        app:layout_constraintStart_toEndOf="@+id/dspibBotonBuscar"
+        app:layout_constraintStart_toEndOf="@+id/dspibBotonCrear"
         app:layout_constraintTop_toTopOf="@+id/dspivMenuHorizontal" />
 
     <TextView

@@ -6,6 +6,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.SearchView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -21,8 +25,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class SeleccionComidasFragment extends Fragment {
-
+public class SeleccionComidasFragment extends Fragment implements SearchView.OnQueryTextListener {
+    private SearchView svBuscar;
+    private ImageView ivVolver;
     private RecyclerView rvSeleccionComidas;
     private SeleccionComidasAdapter seleccionComidasAdapter;
     private List<PojoAlimentos> listaComidas = new ArrayList<>();
@@ -41,8 +46,20 @@ public class SeleccionComidasFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        svBuscar = view.findViewById(R.id.fscsvBarraBusqueda);
         rvSeleccionComidas = view.findViewById(R.id.fscrvSeleccionComidas);
         rvSeleccionComidas.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        ivVolver = view.findViewById(R.id.fscbtVolver);
+
+        svBuscar.setOnQueryTextListener(this);
+
+        // Configurar el clic del botón "Volver"
+        ivVolver.setOnClickListener(v -> {
+            // Usar FragmentManager para regresar al fragmento anterior
+            if (getFragmentManager() != null) {
+                getFragmentManager().popBackStack(); // Regresa al fragmento anterior en la pila
+            }
+        });
 
         // Inicializa Retrofit
         RepoAlimentos apiService = ApiAlimentos.getInstancia().create(RepoAlimentos.class);
@@ -71,4 +88,20 @@ public class SeleccionComidasFragment extends Fragment {
 
     }
 
+    @Override
+    public boolean onQueryTextSubmit(String texto) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String texto) {
+        if (texto.isEmpty()) {
+            // Restaurar la lista original si el texto está vacío
+            seleccionComidasAdapter.restaurarListaOriginal();
+        } else {
+            // Filtrar la lista según el texto ingresado
+            seleccionComidasAdapter.filtrar(texto);
+        }
+        return true;
+    }
 }

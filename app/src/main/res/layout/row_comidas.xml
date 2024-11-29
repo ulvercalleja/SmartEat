@@ -5,7 +5,7 @@
     android:layout_height="110dp"
     android:padding="16dp">
 
-    <ImageButton
+    <ImageView
         android:id="@+id/rcibComida"
         android:layout_width="251dp"
         android:layout_height="75dp"

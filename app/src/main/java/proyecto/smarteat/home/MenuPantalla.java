@@ -9,7 +9,7 @@ import android.widget.ImageButton;
 import android.content.Intent;
 
 import proyecto.smarteat.R;
-import proyecto.smarteat.buscar.BuscarFragment;
+import proyecto.smarteat.crear.CrearFragment;
 import proyecto.smarteat.calendario.CalendarioFragment;
 import proyecto.smarteat.auth.login.LoginPantalla;
 import proyecto.smarteat.home.comidas.ComidasFragment;
@@ -18,7 +18,7 @@ import proyecto.smarteat.perfil.ActividadPerfil;
 
 public class MenuPantalla extends AppCompatActivity {
 
-    ImageButton btHome, btCalendario, btComida, btBuscar, btPerfil;
+    ImageButton btHome, btCalendario, btCrear, btPerfil;
     int userId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +27,7 @@ public class MenuPantalla extends AppCompatActivity {
 
         btHome = findViewById(R.id.dspibBotonHome);
         btCalendario = findViewById(R.id.dspibBotonCalendario);
-        btBuscar = findViewById(R.id.dspibBotonBuscar);
+        btCrear = findViewById(R.id.dspibBotonCrear);
         btPerfil = findViewById(R.id.dspibBotonPerfil);
 
         Intent intent = getIntent();
@@ -45,8 +45,8 @@ public class MenuPantalla extends AppCompatActivity {
             cargarFragmentoCalendario();
         });
 
-        btBuscar.setOnClickListener(v -> {
-            cargarFragmentoBuscar();
+        btCrear.setOnClickListener(v -> {
+            cargarFragmentoCrear();
         });
 
         btPerfil.setOnClickListener(v -> {
@@ -80,8 +80,8 @@ public class MenuPantalla extends AppCompatActivity {
         transaction.commit();
     }
 
-    private void cargarFragmentoBuscar() {
-        BuscarFragment fragmentBuscar = new BuscarFragment();
+    private void cargarFragmentoCrear() {
+        CrearFragment fragmentBuscar = new CrearFragment();
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.mpfrFragmentListas, fragmentBuscar);

@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.components.Legend;  // Importación de la clase Legend
@@ -41,6 +42,7 @@ public class TusComidasFragment extends Fragment {
     private TusComidasAdapter tusComidasAdapter;
     private List<PojoTusComidas> listaTusComidas = new ArrayList<>();
     private TextView noHayComida;
+    private ImageView ivVolver;
 
     public TusComidasFragment() {
         // Required empty public constructor
@@ -71,7 +73,16 @@ public class TusComidasFragment extends Fragment {
 
         noHayComida = view.findViewById(R.id.ftctvNoHayComida);
         rvTusComidas = view.findViewById(R.id.ftcrvTusComidas);
+        ivVolver = view.findViewById(R.id.ftcivVolver);
         rvTusComidas.setLayoutManager(new GridLayoutManager(getContext(), 2));
+
+        // Configurar el clic del botón "Volver"
+        ivVolver.setOnClickListener(v -> {
+            // Usar FragmentManager para regresar al fragmento anterior
+            if (getFragmentManager() != null) {
+                getFragmentManager().popBackStack(); // Regresa al fragmento anterior en la pila
+            }
+        });
 
         tusComidasAdapter = new TusComidasAdapter(listaTusComidas, getContext());
         noHayComida.setVisibility(View.GONE);

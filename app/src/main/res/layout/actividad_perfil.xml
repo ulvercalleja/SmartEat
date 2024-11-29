@@ -8,6 +8,17 @@
     tools:context=".perfil.ActividadPerfil"
     android:background="@drawable/background_perfil">
 
+    <ImageView
+        android:id="@+id/fpivVolver"
+        android:layout_width="33dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="48dp"
+        android:src="@drawable/boton_volver_blanco"
+        app:layout_constraintBottom_toTopOf="@+id/fpivFotoPerfil"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
         android:id="@+id/fpetUsername"
         android:layout_width="wrap_content"
@@ -60,6 +71,7 @@
         android:textColor="#F6E8DD"
         android:textColorHint="#FFFFFF"
         android:textSize="20sp"
+        android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fpetEmail" />
 
@@ -78,6 +90,7 @@
         android:textColor="#F6E8DD"
         android:textColorHint="#FFFFFF"
         android:textSize="20sp"
+        android:inputType="textPassword"
         app:layout_constraintEnd_toStartOf="@+id/fpetContrasena"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fpetEmail" />

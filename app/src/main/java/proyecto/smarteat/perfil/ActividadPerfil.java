@@ -5,14 +5,21 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.TextUtils;
+import android.util.Base64;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
+
+import java.io.ByteArrayOutputStream;
 
 import proyecto.smarteat.R;
 import proyecto.smarteat.InicioPantalla;
@@ -24,7 +31,7 @@ public class ActividadPerfil extends AppCompatActivity {
 
     Button btCerrarSesion, btEditarPerfil;
     EditText etNombreUsuario, etEmailUsuario,etContrasena,etNuevaContrasena;
-    ImageView ivCambiarFoto, ivFotoPerfil;
+    ImageView ivCambiarFoto, ivFotoPerfil, ivVolver;
     PerfilViewModel perfilViewModel;
     int userId;
     String contrasenaOriginal, nombreUsuarioOriginal, emailOriginal;
@@ -43,7 +50,7 @@ public class ActividadPerfil extends AppCompatActivity {
         etNuevaContrasena = findViewById(R.id.fpetContrasenaNueva);
         ivCambiarFoto = findViewById(R.id.fpivCambiarFotoPerfil);
         ivFotoPerfil = findViewById(R.id.fpivFotoPerfil);
-
+        ivVolver = findViewById(R.id.fpivVolver);
         // Obtener userId del Intent
         Intent intent = getIntent();
         if (intent != null && intent.hasExtra(LoginPantalla.ID_USUARIO)) {
@@ -51,6 +58,10 @@ public class ActividadPerfil extends AppCompatActivity {
         }
 
         perfilViewModel = new ViewModelProvider(this).get(PerfilViewModel.class);
+
+        ivVolver.setOnClickListener(v -> {
+            finish();
+        });
 
         perfilViewModel.getPerfil(userId).observe(this, perfil -> {
             etNombreUsuario.setText(perfil.getNombreUsuario());
@@ -99,7 +110,8 @@ public class ActividadPerfil extends AppCompatActivity {
                 String email = etEmailUsuario.getText().toString();
                 String contrasenaActual = etContrasena.getText().toString();
                 String nuevaContrasena = etNuevaContrasena.getText().toString();
-
+                String imagenBase64 = convertirImagenAStringBase64(ivFotoPerfil);
+                Log.d("DEBUG", "Imagen en Base64: " + imagenBase64);
                 etNombreUsuario.setEnabled(false);
                 etEmailUsuario.setEnabled(false);
                 etContrasena.setEnabled(false);
@@ -111,7 +123,7 @@ public class ActividadPerfil extends AppCompatActivity {
                 if (!TextUtils.isEmpty(nombreUsuario) && !TextUtils.isEmpty(email)) {
 
                     if (nombreUsuario.equals(nombreUsuarioOriginal) && email.equals(emailOriginal) && nuevaContrasena.isEmpty()) {
-                        PojoUsuario usuario = new PojoUsuario(userId, nombreUsuario, email, contrasenaOriginal);
+                        PojoUsuario usuario = new PojoUsuario(userId, nombreUsuario, imagenBase64, email, contrasenaOriginal);
                         perfilViewModel.editarPerfil(usuario);
                     } else {
                         // Si hay cambios, validar contraseña si se requiere
@@ -124,10 +136,10 @@ public class ActividadPerfil extends AppCompatActivity {
                         } else {
                             // Si la contraseña es válida y hay una nueva contraseña
                             if (!TextUtils.isEmpty(nuevaContrasena)) {
-                                PojoUsuario usuario = new PojoUsuario(userId, nombreUsuario, email, nuevaContrasena);
+                                PojoUsuario usuario = new PojoUsuario(userId, nombreUsuario, imagenBase64, email, nuevaContrasena);
                                 perfilViewModel.editarPerfil(usuario);
                             } else {
-                                PojoUsuario usuario = new PojoUsuario(userId, nombreUsuario, email, contrasenaOriginal);
+                                PojoUsuario usuario = new PojoUsuario(userId, nombreUsuario, imagenBase64, email, contrasenaOriginal);
                                 perfilViewModel.editarPerfil(usuario);
                             }
                         }
@@ -155,6 +167,25 @@ public class ActividadPerfil extends AppCompatActivity {
         startActivityForResult(Intent.createChooser(intent, "Seleccion una imagen"), PICK_IMAGE_REQUEST);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+            // Obtener la URI de la imagen seleccionada
+            try {
+                // Convertir la URI a un Bitmap
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), data.getData());
+
+                // Establecer el Bitmap en ivFotoPerfil
+                ivFotoPerfil.setImageBitmap(bitmap);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     private void logout() {
         SharedPreferences.Editor editor = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE).edit();
         editor.clear(); // Eliminar todos los datos guardados
@@ -167,4 +198,18 @@ public class ActividadPerfil extends AppCompatActivity {
         finish();
     }
 
+    private String convertirImagenAStringBase64(ImageView imageView) {
+        // Obtener la imagen del ImageView
+        Bitmap bitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
+
+        // Convertir la imagen a un array de bytes
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+        byte[] byteArray = byteArrayOutputStream.toByteArray();
+
+        // Convertir el array de bytes a Base64
+        return Base64.encodeToString(byteArray, Base64.DEFAULT);
+    }
+
 }
+
