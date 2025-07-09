@@ -67,7 +67,7 @@ public class ConstantUtils {
     public static final String PERFIL_BT_EDITAR_TEXT_EDITAR = "Editar Perfil";
     public static final String PERFIL_BT_EDITAR_TEXT_GUARDAR = "Guardar";
     /* Otros valores de uso constante */
-    public static final String BASE_URL = "http://192.168.80.113:8080/";
+    public static final String BASE_URL = "https://smarteat.onrender.com/";
     public static final int CREAR_PICK_IMAGE_REQUEST = 1;  // Código de solicitud para abrir la galería
 
     /*Los siguientes dos metodos se usan para obtener el SnackBar (resultado operacion) personalizado*/

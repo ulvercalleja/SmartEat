@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <!-- Este xml define la imagen redonda en el Splash Screen -->
+    <stroke
+        android:width="2dp"
+        android:color="#FFFFFF"/>
+    <solid android:color="@android:color/transparent"/>
+</shape>
